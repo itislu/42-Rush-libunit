@@ -15,7 +15,7 @@ LIBS_LOCAL		=	$(LIB_ROOT_DIR)/libft/libft.a
 
 #	Files
 
-SRC_DIR			:=	src
+SRC_DIR			:=	framework
 # SRC				:=	$(addprefix $(SRC_DIR)/, \
 # 					main.c \
 # )

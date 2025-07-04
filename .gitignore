@@ -1,0 +1,17 @@
+*
+!*/
+!*.c
+!*.h
+!*.md
+!*.mk
+!*.supp
+!.clang-format
+!.clang-uml
+!.clangd
+!.devcontainer/**
+!.gitignore
+!Dockerfile
+!Doxyfile
+!Makefile
+.VSCodeCounter/
+latex/

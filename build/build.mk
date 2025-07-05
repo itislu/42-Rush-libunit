@@ -80,13 +80,13 @@ modes			:
 					if [ "$(CLEAR)" = "true" ]; then \
 						clear; \
 					fi
-					if [ "$(NEW_TERM)" = "true" ] && [ -n "$(TERMINAL)" ]; then \
+					if [ -z "$(IS_LIB)" ] && [ "$(NEW_TERM)" = "true" ] && [ -n "$(TERMINAL)" ]; then \
 						$(TERMINAL) $(TERMINALFLAGS) bash -c \
 							"unset MAKECMDGOALS; \
 							trap ':' SIGINT; \
 							$(ENV) ./$(NAME) $(value ARGS); \
 							exec $(shell echo $$SHELL)"; \
-					elif [ "$(RUN)" = "true" ]; then \
+					elif [ -z "$(IS_LIB)" ] && [ "$(RUN)" = "true" ]; then \
 						$(ENV) "./$(NAME)" $(value ARGS); \
 					else \
 						$(call PRINTLN,"$(MSG_USAGE)"); \

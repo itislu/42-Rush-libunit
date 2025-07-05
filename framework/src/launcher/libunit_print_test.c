@@ -28,6 +28,7 @@ static char	*result_as_string(t_result result)
 	return (strings[result]);
 }
 
+// print test result: [test_function]:[test_name]:[status]
 void	prt_single_test_result(char *collection, t_unit_test *test)
 {
 	ft_printf("%s : %s : %s\n",
@@ -36,4 +37,12 @@ void	prt_single_test_result(char *collection, t_unit_test *test)
 		result_as_string(test->result));
 }
 
-// print test result: [test_function]:[test_name]:[status]
+void	prt_collection_test_result(t_libunit *libunit)
+{
+	ft_printf("\n%s :: total tests %i :: success %i :: fais %i :: crash %i\n",
+		libunit->name,
+		libunit->total.n_tests,
+		libunit->total.n_success,
+		libunit->total.n_fail,
+		libunit->total.n_crash);
+}

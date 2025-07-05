@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 16:27:57 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 16:32:19 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,6 @@
 static bool	launch_test(t_unit_test	*test);
 static void	update_collection_stats(t_stats *collection, t_unit_test *test);
 static void	update_total_stats(t_libunit *libunit, const t_stats *collection);
-
-/*
-    libunit test launcher
-
-        while test node
-            fork
-            if child run test
-            if parent
-                wait
-                get result
-                print result
-                update struct success counter
-            next node
-        print collection result
-        update total results in libunit struct
-
-	In case of complete success, the routine exits returning 0.
-	If at least one of the tests failed the routine returns -1.
-*/
 
 int	libunit_launch(t_libunit *libunit)
 {
@@ -61,7 +42,7 @@ int	libunit_launch(t_libunit *libunit)
 	}
 	ft_lstclear(&libunit->tests, unit_test_free);
 	update_total_stats(libunit, &collection_stats);
-	// TODO print collection result: SUCCES / TOTAL
+	prt_collection_test_result(libunit);
 	return (result);
 }
 
@@ -76,9 +57,10 @@ static bool	launch_test(t_unit_test	*test)
 	// fork
 	pid = fork();
 	if (pid == 0)
-	{ // TODO time out thread 
+	{
+		// TODO time out thread 
 		status = test->func();
-		// TODO cleanup!
+		// FIXME child cleanup!
 		exit(status);
 	}
 	else if (pid > 0)
@@ -109,3 +91,22 @@ static void	update_total_stats(t_libunit *libunit, const t_stats *collection)
 	libunit->total.n_fail += collection->n_fail;
 	libunit->total.n_crash += collection->n_crash;
 }
+
+/*
+    libunit test launcher
+
+        while test node
+            fork
+            if child run test
+            if parent
+                wait
+                get result
+                print result
+                update struct success counter
+            next node
+        print collection result
+        update total results in libunit struct
+
+	In case of complete success, the routine exits returning 0.
+	If at least one of the tests failed the routine returns -1.
+*/

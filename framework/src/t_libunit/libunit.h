@@ -15,12 +15,19 @@
 
 #include "libft/libft.h"
 
+typedef struct s_stats
+{
+	unsigned	n_tests;
+	unsigned	n_success;
+	unsigned	n_fail;
+	unsigned	n_crash;
+}	t_stats;
+
 typedef struct s_libunit
 {
 	const char	*name;
 	t_list		*tests;
-	unsigned	n_tests;
-	unsigned	n_success;
+	t_stats		total;
 }	t_libunit;
 
 typedef enum e_result

@@ -15,6 +15,13 @@
 
 #include "libft/libft.h"
 
+typedef enum e_state
+{
+	STATE_OK,
+	STATE_NOT_OK,
+	STATE_ERROR
+}	t_state;
+
 typedef struct s_stats
 {
 	unsigned	n_tests;
@@ -28,6 +35,7 @@ typedef struct s_libunit
 	const char	*name;
 	t_list		*tests;
 	t_stats		total;
+	t_state		state;
 }	t_libunit;
 
 #endif

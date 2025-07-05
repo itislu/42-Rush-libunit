@@ -6,41 +6,40 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:43:06 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 17:41:13 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 21:18:41 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "launcher.h"
 #include <signal.h>
+#include <wait.h>
 
 static t_result	exited_normally(int w_exitstat)
 {
 	if (w_exitstat != 0)
-		return (R_KO);
+		return (TEST_KO);
 	else
-		return (R_OK);
+		return (TEST_OK);
 }
 
 static t_result	terminated_by_signal(int w_termsig)
 {
 	if (w_termsig == SIGSEGV)
-		return (R_SIGSEGV);
+		return (TEST_SIGSEGV);
 	else if (w_termsig == SIGBUS)
-		return (R_SIGBUS);
+		return (TEST_SIGBUS);
 	else
-		return (R_SIGOTHER);
+		return (TEST_SIGOTHER);
 }
 
 t_result	get_child_status(int status)
 {
-	int	last_status;
-
 	if (WIFEXITED(status))
 		return (exited_normally(WEXITSTATUS(status)));
 	else if (WIFSIGNALED(status))
 		return (terminated_by_signal(WTERMSIG(status)));
 	else
-		return (R_SIGOTHER);
+		return (TEST_SIGOTHER);
 }
 
 /*

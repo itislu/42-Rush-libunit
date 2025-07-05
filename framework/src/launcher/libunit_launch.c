@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 19:58:19 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 20:59:07 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 #include "t_libunit/t_libunit.h"
 #include "utils/utils.h"
 #include "launcher.h"
+#include "libunit.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <sys/wait.h>
 
-static void		launch_test(t_unit_test	*test, t_result *result,
-					t_state *libunit_state);
-static void		update_collection_stats(t_stats *collection, t_result result);
-static void		update_total_stats(t_libunit *libunit,
-					const t_stats *collection);
-static void		prt_error(const char *collection_name);
+static void	launch_test(t_unit_test	*test, t_result *test_result,
+				t_libunit *libunit);
+static void	update_collection_stats(t_stats *collection, t_result result);
+static void	update_total_stats(t_libunit *libunit, const t_stats *collection);
+static void	prt_error(const char *collection_name);
 
 void	libunit_launch(t_libunit *libunit)
 {
@@ -40,7 +40,7 @@ void	libunit_launch(t_libunit *libunit)
 	while (node != NULL)
 	{
 		test = node->content;
-		launch_test(test, &result, &libunit->state);
+		launch_test(test, &result, libunit);
 		if (libunit->state == S_ERROR)
 		{
 			prt_error(libunit->name);
@@ -57,8 +57,8 @@ void	libunit_launch(t_libunit *libunit)
 }
 
 // Returns false if fork etc failed
-static void	launch_test(t_unit_test	*test, t_result *result,
-					t_state *libunit_state)
+static void	launch_test(t_unit_test	*test, t_result *test_result,
+				t_libunit *libunit)
 {
 	int			pid;
 	int			status;
@@ -68,17 +68,17 @@ static void	launch_test(t_unit_test	*test, t_result *result,
 	pid = fork();
 	if (pid == 0)
 	{
-		// TODO time out thread 
-		status = func(); // [ ] maybe cleanup fixed with (*func)(void) local variable
+		libunit_free(&libunit);
+		status = func();
 		exit(status);
 	}
 	else if (pid > 0)
 	{
 		waitpid(pid, &status, 0);
-		*result = get_child_status(status);
+		*test_result = get_child_status(status);
 	}
 	else
-		*libunit_state = S_ERROR;
+		libunit->state = S_ERROR;
 }
 
 static void	update_collection_stats(t_stats *collection, t_result result)

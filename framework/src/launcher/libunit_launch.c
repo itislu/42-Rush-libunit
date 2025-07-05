@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 16:09:28 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 16:19:15 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 #include <sys/wait.h>
 
 static bool	launch_test(t_unit_test	*test);
-static void	update_stats(t_libunit *libunit, t_unit_test *test);
+static void	update_collection_stats(t_stats *collection, t_unit_test *test);
+static void	update_total_stats(t_libunit *libunit, const t_stats *collection);
 
 /*
     libunit test launcher
@@ -43,6 +44,7 @@ int	libunit_launch(t_libunit *libunit)
 {
 	t_unit_test	*test;
 	t_list		*node;
+	t_stats		collection_stats;
 	int			result;
 
 	result = 0;
@@ -53,10 +55,11 @@ int	libunit_launch(t_libunit *libunit)
 		if (!launch_test(node->content))
 			result = -1;
 		prt_single_test_result(libunit->name, node->content);
-		update_stats(libunit, node->content);
+		update_collection_stats(&collection_stats, node->content);
 		node = node->next;
 	}
 	ft_lstclear(&libunit->tests, unit_test_free);
+	update_total_stats(libunit, &collection_stats);
 	// TODO print collection result: SUCCES / TOTAL
 	return (result);
 }
@@ -87,8 +90,21 @@ static bool	launch_test(t_unit_test	*test)
 	return (true);
 }
 
-static void	update_stats(t_libunit *libunit, t_unit_test *test)
+static void	update_collection_stats(t_stats *collection, t_unit_test *test)
 {
 	if (test->result == R_OK)
-		libunit->n_success += 1;
+		collection->n_success += 1;
+	else if (test->result == R_KO)
+		collection->n_fail += 1;
+	else
+		collection->n_crash += 1;
+	collection->n_tests += 1;
+}
+
+static void	update_total_stats(t_libunit *libunit, const t_stats *collection)
+{
+	libunit->total.n_tests += collection->n_tests;
+	libunit->total.n_success += collection->n_success;
+	libunit->total.n_fail += collection->n_fail;
+	libunit->total.n_crash += collection->n_crash;
 }

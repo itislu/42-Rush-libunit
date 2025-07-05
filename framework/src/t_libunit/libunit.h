@@ -30,16 +30,4 @@ typedef struct s_libunit
 	t_stats		total;
 }	t_libunit;
 
-typedef enum e_result
-{
-	R_OK,
-	R_KO,
-	R_SIGSEGV,
-	R_SIGBUS,
-	R_SIGOTHER,
-}	t_result;
-
-t_result	get_child_status(int status);
-void		prt_single_test_result(char *collection, t_unit_test *test);
-
 #endif

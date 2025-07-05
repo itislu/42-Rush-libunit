@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 19:44:15 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 19:45:29 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,23 +101,10 @@ static void	update_total_stats(t_libunit *libunit, const t_stats *collection)
 }
 
 static void	prt_error(const char *collection_name)
-{}
-
-/*
-    libunit test launcher
-
-        while test node
-            fork
-            if child run test
-            if parent
-                wait
-                get result
-                print result
-                update struct success counter
-            next node
-        print collection result
-        update total results in libunit struct
-
-	In case of complete success, the routine exits returning 0.
-	If at least one of the tests failed the routine returns -1.
-*/
+{
+	ft_dprintf(STDERR_FILENO,
+		"\nAn error occuring during test-launch-execution for %s. "
+		"This collection of tests will abort. "
+		"If there are any more collections, they will continue.\n",
+		collection_name);
+}

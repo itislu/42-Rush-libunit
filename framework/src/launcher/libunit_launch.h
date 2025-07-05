@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libunit_launch.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:25:43 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 16:36:01 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:01:57 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBUNIT_LAUNCH_H
 
 # include "t_libunit/unit_test.h"
-# include "t_libunit/libunit.h"
+# include "t_libunit/t_libunit.h"
 
 typedef enum e_result
 {

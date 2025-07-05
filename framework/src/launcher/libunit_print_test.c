@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   libunit_print_test.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:52:12 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 16:58:29 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:01:53 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/ft_printf.h"
-#include "t_libunit/libunit.h"
+#include "t_libunit/t_libunit.h"
 #include "t_libunit/unit_test.h"
 #include "libunit_launch.h"
 

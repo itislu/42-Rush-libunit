@@ -6,11 +6,14 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 08:29:59 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/05 08:31:59 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/05 14:29:12 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TESTS_H
 # define TESTS_H
+
+int	minus_one(void);
+int	one(void);
 
 #endif

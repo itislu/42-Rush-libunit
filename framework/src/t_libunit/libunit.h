@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libunit.h                                          :+:      :+:    :+:   */
+/*   libunit.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 10:13:27 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/05 15:01:28 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/05 14:28:49 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBUNIT_H
-# define LIBUNIT_H
+#ifndef T_UNIT_TEST_H
+# define T_UNIT_TEST_H
 
-# include <stdbool.h>
+#include "libft/libft.h"
 
-typedef struct s_libunit	t_libunit;
-
-void		libunit_free(t_libunit **libunit);
-bool		libunit_load(
-				t_libunit *libunit, const char *name, int (*func)(void));
-t_libunit	*libunit_new(void);
-void		libunit_start_collection(t_libunit *libunit, const char *name);
+typedef struct s_libunit
+{
+	const char	*name;
+	t_list		*tests;
+	unsigned	n_tests;
+	unsigned	n_success;
+}	t_libunit;
 
 #endif

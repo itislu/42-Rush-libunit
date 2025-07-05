@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libunit.h                                          :+:      :+:    :+:   */
+/*   01_minus_one.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 10:13:27 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/05 15:01:28 by ldulling         ###   ########.fr       */
+/*   Created: 2025/07/05 11:14:55 by ldulling          #+#    #+#             */
+/*   Updated: 2025/07/05 14:22:33 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBUNIT_H
-# define LIBUNIT_H
-
-# include <stdbool.h>
-
-typedef struct s_libunit	t_libunit;
-
-void		libunit_free(t_libunit **libunit);
-bool		libunit_load(
-				t_libunit *libunit, const char *name, int (*func)(void));
-t_libunit	*libunit_new(void);
-void		libunit_start_collection(t_libunit *libunit, const char *name);
-
-#endif
+int	minus_one(void)
+{
+	return (-1);
+}

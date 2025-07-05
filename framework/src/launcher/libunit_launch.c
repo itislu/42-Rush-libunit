@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libunit_launch.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 17:08:29 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:37:45 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft/libft.h"
 #include "t_libunit/t_unit_test.h"
 #include "t_libunit/t_libunit.h"
+#include "utils/utils.h"
 #include "libunit_launch.h"
 #include <stdbool.h>
 #include <sys/wait.h>
@@ -42,7 +43,7 @@ int	libunit_launch(t_libunit *libunit)
 	}
 	ft_lstclear(&libunit->tests, unit_test_free);
 	update_total_stats(libunit, &collection_stats);
-	prt_collection_test_result(libunit);
+	prt_total_stats(&collection_stats, libunit->name);
 	return (result);
 }
 

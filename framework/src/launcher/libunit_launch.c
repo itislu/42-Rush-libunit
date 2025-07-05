@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 18:04:42 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:44:45 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,37 +21,42 @@
 #include <stdbool.h>
 #include <sys/wait.h>
 
-static bool	launch_test(t_unit_test	*test);
-static void	update_collection_stats(t_stats *collection, t_unit_test *test);
-static void	update_total_stats(t_libunit *libunit, const t_stats *collection);
+static t_result	launch_test(t_unit_test	*test);
+static void		update_collection_stats(t_stats *collection, t_result result);
+static void		update_total_stats(t_libunit *libunit,
+					const t_stats *collection);
 
 int	libunit_launch(t_libunit *libunit)
 {
 	t_unit_test	*test;
 	t_list		*node;
 	t_stats		collection_stats;
-	int			result;
+	t_result	result;
+	// int			result;
 
-	result = 0;
+	result = R_OK;
+	ft_bzero(&collection_stats, sizeof collection_stats);
 	node = libunit->tests;
 	while (node != NULL)
 	{
 		test = node->content;
 		// TODO return type for launch_test & special task for fork failure
-		if (!launch_test(test))
-			result = -1;
-		prt_test_result(libunit->name, test->name, test->result);
-		update_collection_stats(&collection_stats, node->content);
+		result = launch_test(test);
+		if (result == R_ERR_FORK)
+			break ; // FIXME do something
+		prt_test_result(libunit->name, test->name, result);
+		update_collection_stats(&collection_stats, result);
 		node = node->next;
 	}
 	ft_lstclear(&libunit->tests, unit_test_free);
+	// [ ] right now they are also executed when result == R_ERR_FORK
 	update_total_stats(libunit, &collection_stats);
 	prt_total_stats(&collection_stats, libunit->name);
 	return (result);
 }
 
 // Returns false if fork etc failed
-static bool	launch_test(t_unit_test	*test)
+static t_result	launch_test(t_unit_test	*test)
 {
 	int			pid;
 	int			status;
@@ -62,25 +67,23 @@ static bool	launch_test(t_unit_test	*test)
 	if (pid == 0)
 	{
 		// TODO time out thread 
-		status = func();
-		// FIXME child cleanup! maybe fixed with (*func)(void) local variable
+		status = func(); // [ ] maybe cleanup fixed with (*func)(void) local variable
 		exit(status);
 	}
 	else if (pid > 0)
 	{
 		waitpid(pid, &status, 0);
-		test->result = get_child_status(status);
+		return (get_child_status(status));
 	}
 	else
-		return (false);
-	return (true);
+		return (R_ERR_FORK);
 }
 
-static void	update_collection_stats(t_stats *collection, t_unit_test *test)
+static void	update_collection_stats(t_stats *collection, t_result result)
 {
-	if (test->result == R_OK)
+	if (result == R_OK)
 		collection->n_success += 1;
-	else if (test->result == R_KO)
+	else if (result == R_KO)
 		collection->n_fail += 1;
 	else
 		collection->n_crash += 1;

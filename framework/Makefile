@@ -17,12 +17,16 @@ LIBS_LOCAL		=	$(LIB_ROOT_DIR)/libft/libft.a
 
 SRC_DIR			:=	src
 SRC				:=	$(addprefix $(SRC_DIR)/, \
-					a_lib_function.c \
-					test_collection/test_collection_free.c \
-					test_collection/test_collection_init.c \
-					test_collection/test_collection_load.c \
-					test_collection/unit_test_free.c \
-					test_collection/unit_test_init.c \
+					launcher/libunit_child_status.c \
+					launcher/libunit_child_launch.c \
+					launcher/libunit_child_print_test.c \
+					t_libunit/libunit_finish.c \
+					t_libunit/libunit_free.c \
+					t_libunit/libunit_load.c \
+					t_libunit/libunit_new.c \
+					t_libunit/libunit_start_collection.c \
+					t_libunit/unit_test_free.c \
+					t_libunit/unit_test_init.c \
 )
 
 

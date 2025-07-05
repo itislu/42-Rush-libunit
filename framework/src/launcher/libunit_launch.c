@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   libunit_launch.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 16:34:47 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:08:29 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/ft_printf.h"
 #include "libft/libft.h"
-#include "t_libunit/unit_test.h"
-#include "t_libunit/libunit.h"
+#include "t_libunit/t_unit_test.h"
+#include "t_libunit/t_libunit.h"
 #include "libunit_launch.h"
 #include <stdbool.h>
 #include <sys/wait.h>

@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 15:50:21 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 16:09:28 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <sys/wait.h>
 
 static bool	launch_test(t_unit_test	*test);
+static void	update_stats(t_libunit *libunit, t_unit_test *test);
 
 /*
     libunit test launcher
@@ -48,9 +49,11 @@ int	libunit_launch(t_libunit *libunit)
 	node = libunit->tests;
 	while (test != NULL)
 	{
-		// TODO different return type for launch_test
+		// TODO different return type for launch_test & special task for fork failure
 		if (!launch_test(node->content))
-			result = -1; // TODO special task for fork failure? continue VS abort
+			result = -1;
+		prt_single_test_result(libunit->name, node->content);
+		update_stats(libunit, node->content);
 		node = node->next;
 	}
 	ft_lstclear(&libunit->tests, unit_test_free);
@@ -77,12 +80,15 @@ static bool	launch_test(t_unit_test	*test)
 	else if (pid > 0)
 	{
 		waitpid(pid, &status, NULL);
-		test_res = get_child_status(status);
-		// TODO print
-		// print test result: [test_function]:[test_name]:[status]
-		// TODO update stats
+		test->result = get_child_status(status);
 	}
 	else
 		return (false);
 	return (true);
+}
+
+static void	update_stats(t_libunit *libunit, t_unit_test *test)
+{
+	if (test->result == R_OK)
+		libunit->n_success += 1;
 }

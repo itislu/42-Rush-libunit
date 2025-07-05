@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libunit.h                                  :+:      :+:    :+:   */
+/*   libunit.h                        		            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -22,5 +22,16 @@ typedef struct s_libunit
 	unsigned	n_tests;
 	unsigned	n_success;
 }	t_libunit;
+
+typedef enum e_result
+{
+	R_OK,
+	R_KO,
+	R_SIGSEGV,
+	R_SIGBUS,
+	R_SIGOTHER,
+}	t_result;
+
+t_result	get_child_status(int status);
 
 #endif

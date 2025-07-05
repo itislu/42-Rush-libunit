@@ -7,9 +7,10 @@ int KO_launcher(t_libunit *libunit)
 {
     ft_printf("KO_launcher...\n");
 
-    libunit_init(libunit, "KO");
+    libunit_start_collection(libunit, "KO");
     libunit_load(libunit, "Minus one", minus_one);
     libunit_load(libunit, "One", one);
+    libunit_launch(libunit);
     return (0);
 }
 //  else

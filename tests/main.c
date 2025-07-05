@@ -8,9 +8,12 @@ int main(void)
 
     t_libunit *libunit;
 
-    KO_launcher();
-    OK_launcher();
-    SIGBUS_launcher();
-    SIGSEGV_launcher();
+    libunit = libunit_new();
+    KO_launcher(libunit);
+    OK_launcher(libunit);
+    SIGBUS_launcher(libunit);
+    SIGSEGV_launcher(libunit);
+
     // libunit print total results (libunit struct)
+    return (libunit_finish(&libunit));
 }

@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 21:20:10 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 21:20:42 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,6 @@ static void	prt_error(const char *collection_name)
 	ft_dprintf(STDERR_FILENO,
 		"\nAn error occuring during test-launch-execution for %s. "
 		"This collection of tests will abort. "
-		"If there are any more collections, they will continue.\n",
+		"If there are any more collections, they will continue.\n\n",
 		collection_name);
 }

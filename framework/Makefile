@@ -17,6 +17,9 @@ LIBS_LOCAL		=	$(LIB_ROOT_DIR)/libft/libft.a
 
 SRC_DIR			:=	src
 SRC				:=	$(addprefix $(SRC_DIR)/, \
+					launcher/libunit_child_status.c \
+					launcher/libunit_child_launch.c \
+					launcher/libunit_child_print_test.c \
 					t_libunit/libunit_finish.c \
 					t_libunit/libunit_free.c \
 					t_libunit/libunit_load.c \

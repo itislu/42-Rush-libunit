@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_UNIT_TEST_H
-# define T_UNIT_TEST_H
+#ifndef T_LIBUNIT_H
+# define T_LIBUNIT_H
 
 #include "libft/libft.h"
 

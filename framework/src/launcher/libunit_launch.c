@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 17:48:35 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:04:42 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "t_libunit/t_libunit.h"
 #include "utils/utils.h"
 #include "launcher.h"
+#include <unistd.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <sys/wait.h>
 
@@ -32,12 +34,13 @@ int	libunit_launch(t_libunit *libunit)
 
 	result = 0;
 	node = libunit->tests;
-	while (test != NULL)
+	while (node != NULL)
 	{
+		test = node->content;
 		// TODO return type for launch_test & special task for fork failure
-		if (!launch_test(node->content))
+		if (!launch_test(test))
 			result = -1;
-		prt_test_result(libunit->name, node->content);
+		prt_test_result(libunit->name, test->name, test->result);
 		update_collection_stats(&collection_stats, node->content);
 		node = node->next;
 	}
@@ -50,11 +53,9 @@ int	libunit_launch(t_libunit *libunit)
 // Returns false if fork etc failed
 static bool	launch_test(t_unit_test	*test)
 {
-	int			result;
 	int			pid;
 	int			status;
 	int			(*func)(void);
-	t_result	test_res;
 
 	func = test->func;
 	pid = fork();

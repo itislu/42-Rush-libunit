@@ -6,12 +6,13 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:43:06 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 17:41:13 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:53:21 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "launcher.h"
 #include <signal.h>
+#include <wait.h>
 
 static t_result	exited_normally(int w_exitstat)
 {
@@ -33,8 +34,6 @@ static t_result	terminated_by_signal(int w_termsig)
 
 t_result	get_child_status(int status)
 {
-	int	last_status;
-
 	if (WIFEXITED(status))
 		return (exited_normally(WEXITSTATUS(status)));
 	else if (WIFSIGNALED(status))

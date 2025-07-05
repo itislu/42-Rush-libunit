@@ -33,7 +33,7 @@ int	libunit_launch(t_libunit *libunit)
 	node = libunit->tests;
 	while (test != NULL)
 	{
-		// TODO different return type for launch_test & special task for fork failure
+		// TODO return type for launch_test & special task for fork failure
 		if (!launch_test(node->content))
 			result = -1;
 		prt_single_test_result(libunit->name, node->content);
@@ -54,7 +54,6 @@ static bool	launch_test(t_unit_test	*test)
 	int			status;
 	t_result	test_res;
 
-	// fork
 	pid = fork();
 	if (pid == 0)
 	{

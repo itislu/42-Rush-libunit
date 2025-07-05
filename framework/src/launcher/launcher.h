@@ -6,12 +6,12 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:25:43 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 18:45:04 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:47:53 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBUNIT_LAUNCH_H
-# define LIBUNIT_LAUNCH_H
+#ifndef LAUNCHER_H
+# define LAUNCHER_H
 
 typedef enum e_result
 {

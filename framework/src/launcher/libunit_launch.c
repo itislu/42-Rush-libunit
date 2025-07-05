@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 18:44:45 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:47:39 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	libunit_launch(t_libunit *libunit)
 	t_list		*node;
 	t_stats		collection_stats;
 	t_result	result;
-	// int			result;
 
 	result = R_OK;
 	ft_bzero(&collection_stats, sizeof collection_stats);
@@ -43,7 +42,7 @@ int	libunit_launch(t_libunit *libunit)
 		// TODO return type for launch_test & special task for fork failure
 		result = launch_test(test);
 		if (result == R_ERR_FORK)
-			break ; // FIXME do something
+			break ;
 		prt_test_result(libunit->name, test->name, result);
 		update_collection_stats(&collection_stats, result);
 		node = node->next;

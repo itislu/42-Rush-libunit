@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 16:32:19 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 16:34:47 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static bool	launch_test(t_unit_test	*test)
 	}
 	else if (pid > 0)
 	{
-		waitpid(pid, &status, NULL);
+		waitpid(pid, &status, 0);
 		test->result = get_child_status(status);
 	}
 	else

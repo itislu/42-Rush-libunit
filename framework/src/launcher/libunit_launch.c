@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 17:37:45 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:40:35 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "t_libunit/t_unit_test.h"
 #include "t_libunit/t_libunit.h"
 #include "utils/utils.h"
-#include "libunit_launch.h"
+#include "launcher.h"
 #include <stdbool.h>
 #include <sys/wait.h>
 
@@ -37,7 +37,7 @@ int	libunit_launch(t_libunit *libunit)
 		// TODO return type for launch_test & special task for fork failure
 		if (!launch_test(node->content))
 			result = -1;
-		prt_single_test_result(libunit->name, node->content);
+		prt_test_result(libunit->name, node->content);
 		update_collection_stats(&collection_stats, node->content);
 		node = node->next;
 	}

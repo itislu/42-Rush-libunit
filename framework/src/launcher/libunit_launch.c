@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 20:59:07 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 21:20:10 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	libunit_launch(t_libunit *libunit)
 	{
 		test = node->content;
 		launch_test(test, &result, libunit);
-		if (libunit->state == S_ERROR)
+		if (libunit->state == STATE_ERROR)
 		{
 			prt_error(libunit->name);
 			ft_lstclear(&libunit->tests, unit_test_free);
@@ -78,14 +78,14 @@ static void	launch_test(t_unit_test	*test, t_result *test_result,
 		*test_result = get_child_status(status);
 	}
 	else
-		libunit->state = S_ERROR;
+		libunit->state = STATE_ERROR;
 }
 
 static void	update_collection_stats(t_stats *collection, t_result result)
 {
-	if (result == R_OK)
+	if (result == TEST_OK)
 		collection->n_success += 1;
-	else if (result == R_KO)
+	else if (result == TEST_KO)
 		collection->n_fail += 1;
 	else
 		collection->n_crash += 1;
@@ -98,10 +98,10 @@ static void	update_total_stats(t_libunit *libunit, const t_stats *collection)
 	libunit->total.n_success += collection->n_success;
 	libunit->total.n_fail += collection->n_fail;
 	libunit->total.n_crash += collection->n_crash;
-	if (libunit->state == S_OK
+	if (libunit->state == STATE_OK
 		&& libunit->total.n_tests != libunit->total.n_success)
 	{
-		libunit->state = S_NOT_OK;
+		libunit->state = STATE_NOT_OK;
 	}
 }
 

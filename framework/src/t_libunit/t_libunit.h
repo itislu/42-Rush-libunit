@@ -17,9 +17,9 @@
 
 typedef enum e_state
 {
-	S_OK,
-	S_NOT_OK,
-	S_ERROR
+	STATE_OK,
+	STATE_NOT_OK,
+	STATE_ERROR
 }	t_state;
 
 typedef struct s_stats

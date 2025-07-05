@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:25:43 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 18:47:53 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 21:18:52 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 
 typedef enum e_result
 {
-	R_OK,
-	R_KO,
-	R_SIGSEGV,
-	R_SIGBUS,
-	R_SIGOTHER,
-	R_ERR_FORK
+	TEST_OK,
+	TEST_KO,
+	TEST_SIGSEGV,
+	TEST_SIGBUS,
+	TEST_SIGOTHER,
 }	t_result;
 
 t_result	get_child_status(int status);

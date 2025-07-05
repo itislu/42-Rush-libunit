@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libunit_child_status.c                             :+:      :+:    :+:   */
+/*   get_child_status.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:43:06 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 16:36:43 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:41:13 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libunit_launch.h"
+#include "launcher.h"
 #include <signal.h>
 
 static t_result	exited_normally(int w_exitstat)

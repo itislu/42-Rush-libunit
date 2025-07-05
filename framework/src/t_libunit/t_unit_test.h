@@ -12,9 +12,6 @@
 
 #ifndef T_UNIT_TEST_H
 # define T_UNIT_TEST_H
-
-# include "launcher/launcher.h"
-
 typedef struct s_unit_test	
 {
 	const char	*name;

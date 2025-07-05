@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit_test.h                                        :+:      :+:    :+:   */
+/*   libunit_launch.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 10:13:27 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/05 15:54:31 by mweghofe         ###   ########.fr       */
+/*   Created: 2025/07/05 16:25:43 by mweghofe          #+#    #+#             */
+/*   Updated: 2025/07/05 16:36:01 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_TEST_H
-# define UNIT_TEST_H
+#ifndef LIBUNIT_LAUNCH_H
+# define LIBUNIT_LAUNCH_H
 
-typedef struct s_unit_test	
+# include "t_libunit/unit_test.h"
+# include "t_libunit/libunit.h"
+
+typedef enum e_result
 {
-	const char	*name;
-	int			(*func)(void);
-	t_result	result;
-}	t_unit_test;
+	R_OK,
+	R_KO,
+	R_SIGSEGV,
+	R_SIGBUS,
+	R_SIGOTHER,
+}	t_result;
 
-void	unit_test_free(void *content);
-void	unit_test_init(t_unit_test *unit_test, const char *name, int (*func)(void));
+t_result	get_child_status(int status);
+void		prt_single_test_result(char *collection, t_unit_test *test);
+void		prt_collection_test_result(t_libunit *libunit);
 
 #endif

@@ -7,12 +7,12 @@ int	libunit_finish(t_libunit **libunit)
 {
 	int	result;
 
-	if ((*libunit)->n_success == (*libunit)->n_tests)
+	if ((*libunit)->total.n_success == (*libunit)->total.n_tests)
 		result = 0;
 	else
 		result = -1;
 	ft_printf("%u/%u tests passed\n",
-		(*libunit)->n_success, (*libunit)->n_tests);
+		(*libunit)->total.n_success, (*libunit)->total.n_tests);
 	libunit_free(libunit);
 	return (result);
 }

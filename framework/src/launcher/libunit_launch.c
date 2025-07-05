@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 17:40:35 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:48:35 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,16 @@ static bool	launch_test(t_unit_test	*test)
 	int			result;
 	int			pid;
 	int			status;
+	int			(*func)(void);
 	t_result	test_res;
 
+	func = test->func;
 	pid = fork();
 	if (pid == 0)
 	{
 		// TODO time out thread 
-		status = test->func();
-		// FIXME child cleanup!
+		status = func();
+		// FIXME child cleanup! maybe fixed with (*func)(void) local variable
 		exit(status);
 	}
 	else if (pid > 0)

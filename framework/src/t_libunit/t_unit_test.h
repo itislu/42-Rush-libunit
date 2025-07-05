@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit_test.h                                        :+:      :+:    :+:   */
+/*   t_unit_test.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 10:13:27 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/05 15:54:31 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:07:53 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_TEST_H
-# define UNIT_TEST_H
+#ifndef T_UNIT_TEST_H
+# define T_UNIT_TEST_H
 
 typedef struct s_unit_test	
 {

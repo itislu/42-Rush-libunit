@@ -95,8 +95,8 @@ ifneq (, $(filter opt,$(MAKECMDGOALS) $(subst $(COMMA),$(SPACE),$(MODE))))
 MSG_MODE		:=	$(MSG_MODE)$(if $(MSG_MODE),"\n")$(MSG_OPT)
 endif
 
-MSG_RUN			:=	$(STY_BOL)$(STY_ITA)$(STY_UND)$(STY_YEL)"~~~~~~~~~~~~~~~~~~~~~~~ RUN MODE ~~~~~~~~~~~~~~~~~~~~~~~~"$(STY_RES)
-ifneq (, $(filter run,$(MAKECMDGOALS) $(subst $(COMMA),$(SPACE),$(MODE))))
+MSG_RUN			:=	$(STY_BOL)$(STY_ITA)$(STY_UND)$(STY_YEL)"~~~~~~~~~~~~~~~~~~~~~~~ TEST MODE ~~~~~~~~~~~~~~~~~~~~~~~"$(STY_RES)
+ifneq (, $(filter test,$(MAKECMDGOALS) $(subst $(COMMA),$(SPACE),$(MODE))))
 MSG_MODE		:=	$(MSG_MODE)$(if $(MSG_MODE),"\n")$(MSG_RUN)
 endif
 

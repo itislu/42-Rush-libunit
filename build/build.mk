@@ -21,7 +21,7 @@ DEP_SUBDIRS		:=	$(sort $(dir $(DEP)))
 
 #	Target categories
 
-BUILD_TARGETS	:=	all clear modes run term val valfd
+BUILD_TARGETS	:=	all clear modes term test val valfd
 REBUILD_TARGETS	:=	opt re san
 DOC_TARGETS		:=	bear doxygen uml
 CLEAN_TARGETS	:=	clean fclean ffclean
@@ -65,7 +65,7 @@ all				:
 					fi; \
 					$(call PRINTLN,"$(MSG_USAGE)")
 
-clear opt run san term val valfd: modes
+clear opt san term test val valfd: modes
 
 modes			:
 					if [ "$(CLEAR)" = "true" ]; then \
@@ -191,10 +191,6 @@ ifeq (re, $(filter re,$(MAKECMDGOALS) $(subst $(COMMA),$(SPACE),$(MODE))))
 RECOMPILE		:=	true
 endif
 
-ifeq (run, $(filter run,$(MAKECMDGOALS) $(subst $(COMMA),$(SPACE),$(MODE))))
-RUN				:=	true
-endif
-
 ifeq (san, $(filter san,$(MAKECMDGOALS) $(subst $(COMMA),$(SPACE),$(MODE))))
 CFLAGS			+=	$(CFLAGS_STD) $(CFLAGS_DBG) $(CFLAGS_SAN)
 RECOMPILE		:=	true
@@ -202,6 +198,10 @@ endif
 
 ifeq (term, $(filter term,$(MAKECMDGOALS) $(subst $(COMMA),$(SPACE),$(MODE))))
 NEW_TERM		:=	true
+RUN				:=	true
+endif
+
+ifeq (test, $(filter test,$(MAKECMDGOALS) $(subst $(COMMA),$(SPACE),$(MODE))))
 RUN				:=	true
 endif
 

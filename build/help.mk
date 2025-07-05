@@ -7,24 +7,27 @@ include				$(MAKEFILES_DIR)/print.mk
 
 # ****************************** HELP TARGETS ******************************** #
 
+PROJECT_TYPE	:=	$(if $(IS_LIB),"framework","tests")
+
+
 help			:
 					echo -e "Targets:"
-					echo -e "  all              Build the project (default target)"
-					echo -e "  run              Build and run the project"
-					echo -e "  opt              Rebuild the project with optimizations"
-					echo -e "  san              Rebuild the project with sanitizers"
-					echo -e "  val              Build and run the project with valgrind"
-					echo -e "  valfd            Build and run the project with valgrind and file descriptor tracking"
-					echo -e "  term             Build and run the project in a new terminal window"
-					echo -e "  clear            Clear the terminal, build the project and clear again"
-					echo -e "  re               Rebuild the project"
-					echo -e "  libs             Build all libraries the project depends on"
+					echo -e "  all              Build $(PROJECT_TYPE) (default target)"
+					echo -e "  test             Build and run the $(PROJECT_TYPE)"
+					echo -e "  opt              Rebuild $(PROJECT_TYPE) with optimizations"
+					echo -e "  san              Rebuild $(PROJECT_TYPE) with sanitizers"
+					echo -e "  val              Build and run the $(PROJECT_TYPE) with valgrind"
+					echo -e "  valfd            Build and run the $(PROJECT_TYPE) with valgrind and file descriptor tracking"
+					echo -e "  term             Build and run the $(PROJECT_TYPE) in a new terminal window"
+					echo -e "  clear            Clear the terminal, build $(PROJECT_TYPE) and clear again"
+					echo -e "  re               Rebuild $(PROJECT_TYPE)"
+					echo -e "  libs             Build all libraries $(PROJECT_TYPE) depends on"
 					echo -e "  bear             Generate compilation database using Bear"
 					echo -e "  doxygen          Generate documentation using Doxygen"
 					echo -e "  uml              Generate UML diagrams using clang-uml and convert them to PNG, SVG and PDF"
 					echo -e "  clean            Remove build artifacts"
-					echo -e "  fclean           Remove build artifacts and executable"
-					echo -e "  ffclean          Remove build artifacts, executable and generated documentation without checking for unknown files"
+					echo -e "  fclean           Remove build artifacts and $(PROJECT_TYPE)"
+					echo -e "  ffclean          Remove build artifacts, $(PROJECT_TYPE) and generated documentation without checking for unknown files"
 					echo -e "  print-%          Print the value of a Makefile variable (replace % with variable name)"
 					echo -e "  help             Display this message"
 					echo -e "  help-% | %-help  Display more information for a specific target (replace % with target name)"
@@ -37,25 +40,25 @@ help			:
 					echo -e "Usage: make [\\$(STY_UND)target\\$(STY_RES)] [...] [MODE=<\\$(STY_UND)mode\\$(STY_RES)>,[...]] [ARGS=\"'<\\$(STY_UND)arg\\$(STY_RES)>' [...]\"] [TERMINAL=<\\$(STY_UND)terminal\\$(STY_RES)>]"
 
 help-all all-help:
-					echo -e "Build the project."
+					echo -e "Build the $(PROJECT_TYPE)."
 					echo -e "This is the default target when no target is specified."
 
-help-run run-help:
-					echo -e "Build the project and run the executable."
+help-test test-help:
+					echo -e "Build and run the $(PROJECT_TYPE)."
 					echo -e "Arguments to the program can be passed via the ARGS variable."
 					echo
-					echo -e "Usage: make run [ARGS=\"'<\\$(STY_UND)arg\\$(STY_RES)>' [...]\"]"
+					echo -e "Usage: make test [ARGS=\"'<\\$(STY_UND)arg\\$(STY_RES)>' [...]\"]"
 
 help-opt opt-help:
-					echo -e "Rebuild the project with the following compiler optimization flags:"
+					echo -e "Rebuild the $(PROJECT_TYPE) with the following compiler optimization flags:"
 					echo -e "  $(CXXFLAGS_OPT)"
 
 help-san san-help:
-					echo -e "Rebuild the project with the following sanitizer flags:"
+					echo -e "Rebuild the $(PROJECT_TYPE) with the following sanitizer flags:"
 					echo -e "  $(CXXFLAGS_SAN)"
 
 help-val val-help:
-					echo -e "Build the project and run the executable with valgrind."
+					echo -e "Build and run the $(PROJECT_TYPE) with valgrind."
 					echo -e "Arguments to the program can be passed via the ARGS variable."
 					echo
 					echo -e "The following valgrind flags are used:"
@@ -64,7 +67,7 @@ help-val val-help:
 					echo -e "Usage: make val [ARGS=\"'<\\$(STY_UND)arg\\$(STY_RES)>' [...]\"]"
 
 help-valfd valfd-help:
-					echo -e "Build the project and run the executable with valgrind and file descriptor tracking."
+					echo -e "Build and run the $(PROJECT_TYPE) with valgrind and file descriptor tracking."
 					echo -e "A new terminal window is opened to avoid inheriting open file descriptors."
 					echo -e "Arguments to the program can be passed via the ARGS variable."
 					echo
@@ -76,7 +79,7 @@ help-valfd valfd-help:
 					echo -e "Usage: make valfd [ARGS=\"'<\\$(STY_UND)arg\\$(STY_RES)>' [...]\"]"
 
 help-term term-help:
-					echo -e "Build the project and run the executable in a new terminal window."
+					echo -e "Build and run the $(PROJECT_TYPE) in a new terminal window."
 					echo -e "The terminal emulator used is determined by the TERMINAL variable."
 					echo -e "Arguments to the program can be passed via the ARGS variable."
 					echo
@@ -86,13 +89,13 @@ help-term term-help:
 					echo -e "Usage: make term [TERMINAL=<\\$(STY_UND)terminal\\$(STY_RES)>] [ARGS=\"'<\\$(STY_UND)arg\\$(STY_RES)>' [...]\"]"
 
 help-clear clear-help:
-					echo -e "Clear the terminal, build the project and if successful, clear the terminal again."
+					echo -e "Clear the terminal, build the $(PROJECT_TYPE) and if successful, clear the terminal again."
 
 help-re re-help	:
-					echo -e "Rebuild the project."
+					echo -e "Rebuild the $(PROJECT_TYPE)."
 
 help-libs libs-help:
-					echo -e "Build all libraries the project depends on."
+					echo -e "Build all libraries the $(PROJECT_TYPE) depends on."
 					echo
 					echo -e "The following libraries will be built:"
 					for lib in $(LIBS_LOCAL); do \
@@ -123,10 +126,10 @@ help-clean clean-help:
 					echo -e "Remove build artifacts."
 
 help-fclean fclean-help:
-					echo -e "Remove build artifacts and the executable."
+					echo -e "Remove build artifacts and the $(PROJECT_TYPE)."
 
 help-ffclean ffclean-help:
-					echo -e "Remove build artifacts, the executable and generated documentation without checking for unknown files."
+					echo -e "Remove build artifacts, the $(PROJECT_TYPE) and generated documentation without checking for unknown files."
 					echo
 					echo -e "The following directories will be removed:"
 					echo -e "  $(OBJ_DIR)"

@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 18:47:39 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:48:55 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	libunit_launch(t_libunit *libunit)
 	while (node != NULL)
 	{
 		test = node->content;
-		// TODO return type for launch_test & special task for fork failure
 		result = launch_test(test);
 		if (result == R_ERR_FORK)
 			break ;
@@ -48,7 +47,8 @@ int	libunit_launch(t_libunit *libunit)
 		node = node->next;
 	}
 	ft_lstclear(&libunit->tests, unit_test_free);
-	// [ ] right now they are also executed when result == R_ERR_FORK
+	if (result == R_ERR_FORK)
+		return (result);
 	update_total_stats(libunit, &collection_stats);
 	prt_total_stats(&collection_stats, libunit->name);
 	return (result);

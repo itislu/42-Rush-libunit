@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 19:45:29 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/05 19:58:19 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,11 @@ static void	update_total_stats(t_libunit *libunit, const t_stats *collection)
 	libunit->total.n_success += collection->n_success;
 	libunit->total.n_fail += collection->n_fail;
 	libunit->total.n_crash += collection->n_crash;
+	if (libunit->state == S_OK
+		&& libunit->total.n_tests != libunit->total.n_success)
+	{
+		libunit->state = S_NOT_OK;
+	}
 }
 
 static void	prt_error(const char *collection_name)

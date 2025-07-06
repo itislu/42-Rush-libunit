@@ -11,4 +11,6 @@ SRC	+=	$(addprefix bonus/, \
 		09_sigill_trap.c \
 		10_sigabrt_abort.c \
 		11_sigabrt_assert.c \
+		12_sigfpe_div.c \
+		13_sigfpe_mod.c \
 )

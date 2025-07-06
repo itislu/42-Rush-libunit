@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launchers.h                                        :+:      :+:    :+:   */
+/*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 08:17:41 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 08:12:25 by ldulling         ###   ########.fr       */
+/*   Created: 2025/07/05 08:29:59 by ldulling          #+#    #+#             */
+/*   Updated: 2025/07/06 08:12:19 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LAUNCHERS_H
-# define LAUNCHERS_H
+#ifndef TESTS_H
+# define TESTS_H
 
-# include "libunit.h"
-
-void	ft_atoi_launcher(t_libunit *libunit);
-void	ft_snprintf_launcher(t_libunit *libunit);
+int	positive(void);
+int	negative(void);
+int	zero(void);
+int	leading_whitespace(void);
+int	non_digit_leading(void);
+int	non_digit_middle(void);
+int	multi_sign(void);
+int	empty(void);
+int	int_min(void);
 
 #endif

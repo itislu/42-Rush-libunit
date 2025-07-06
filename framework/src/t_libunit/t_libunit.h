@@ -13,7 +13,7 @@
 #ifndef T_LIBUNIT_H
 # define T_LIBUNIT_H
 
-#include "libft/libft.h"
+# include "libft/libft.h"
 
 typedef enum e_state
 {
@@ -24,10 +24,10 @@ typedef enum e_state
 
 typedef struct s_stats
 {
-	unsigned	n_tests;
-	unsigned	n_success;
-	unsigned	n_fail;
-	unsigned	n_crash;
+	unsigned int	n_tests;
+	unsigned int	n_success;
+	unsigned int	n_fail;
+	unsigned int	n_crash;
 }	t_stats;
 
 typedef struct s_libunit

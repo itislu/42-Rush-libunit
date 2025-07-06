@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libunit_load.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/06 22:49:27 by ldulling          #+#    #+#             */
+/*   Updated: 2025/07/06 22:49:55 by ldulling         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft/ft_printf.h"
 #include "libft/libft.h"
 #include "libunit.h"
@@ -15,7 +27,7 @@ bool	libunit_load(t_libunit *libunit, const char *name, int (*func)(void))
 	if (!load(libunit, name, func))
 	{
 		libunit->state = STATE_ERROR;
-		ft_dprintf(STDERR_FILENO, "ERROR: Failed to load test %s:%s\n", 
+		ft_dprintf(STDERR_FILENO, "ERROR: Failed to load test %s:%s\n",
 			libunit->name, name);
 		return (false);
 	}

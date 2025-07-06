@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   prt_tests_result_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:52:12 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 20:49:50 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 21:56:04 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/ft_printf.h"
-#include "launcher_bonus.h"
+#include "launcher/launcher_bonus.h"
 #include "t_libunit/t_libunit_bonus.h"
 #include "utils/colors_bonus.h"
 

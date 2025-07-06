@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prt_total_stats_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 17:30:32 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 16:28:39 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 20:32:51 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,8 @@
 // prints all stats of t_stats, works with collection & total stats
 void	prt_total_stats(t_stats *stats, const char *name)
 {
-	char	*line_format;
-	bool	summary;
+	const char	*line_format = RESET BOLD;
 
-	summary = false;
-	if (ft_strcmp(name, "SUMMARY") != 0)
-		line_format = RESET DIM BOLD;
-	else
-	{
-		line_format = RESET BOLD;
-		summary = true;
-	}
 	ft_printf("\n%s%s%s :: total %i :: %ssuccess%s %i :: "\
 		"%sfail%s %i :: %scrash%s %i%s\n",
 		BOLD, name, line_format,
@@ -38,8 +29,7 @@ void	prt_total_stats(t_stats *stats, const char *name)
 		stats->n_fail,
 		RED, line_format,
 		stats->n_crash, RESET);
-	if (summary)
-		ft_printf("\n");
+	ft_printf("\n");
 }
 
 /*

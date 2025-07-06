@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:52:12 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 16:39:58 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:09:02 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ static const char	*result_as_string(t_result result)
 		RED"SIGSEGV"RESET,
 		RED"SIGBUS"RESET,
 		YELLOW"TIMEOUT"RESET,
+		RED"SIGILL"RESET,
+		RED"SIGABRT"RESET,
+		RED"SIGFPE"RESET,
+		RED"SIGPIPE"RESET,
 		RED"UNDEFINED"RESET
 	};
 

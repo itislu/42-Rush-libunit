@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:25:43 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 16:37:19 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:07:44 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ typedef enum e_result
 	TEST_SIGSEGV,
 	TEST_SIGBUS,
 	TEST_TIMEOUT,
+	TEST_SIGILL,
+	TEST_SIGABRT,
+	TEST_SIGFPE,
+	TEST_SIGPIPE,
 	TEST_SIGOTHER,
 }	t_result;
 

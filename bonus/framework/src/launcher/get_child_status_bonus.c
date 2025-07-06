@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:43:06 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 16:38:05 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:09:42 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ static t_result	terminated_by_signal(int w_termsig)
 		return (TEST_SIGBUS);
 	else if (w_termsig == SIGALRM)
 		return (TEST_TIMEOUT);
+	else if (w_termsig == SIGILL)
+		return (TEST_SIGILL);
+	else if (w_termsig == SIGABRT)
+		return (TEST_SIGABRT);
+	else if (w_termsig == SIGFPE)
+		return (TEST_SIGFPE);
+	else if (w_termsig == SIGPIPE)
+		return (TEST_SIGPIPE);
 	else
 		return (TEST_SIGOTHER);
 }

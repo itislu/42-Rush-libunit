@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launchers_bonus.h                                  :+:      :+:    :+:   */
+/*   16_sigpipe_socket.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 08:17:41 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 16:57:53 by mweghofe         ###   ########.fr       */
+/*   Created: 2025/07/06 17:46:48 by mweghofe          #+#    #+#             */
+/*   Updated: 2025/07/06 17:57:36 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LAUNCHERS_BONUS_H
-# define LAUNCHERS_BONUS_H
+#include <sys/socket.h>
+#include <unistd.h>
 
-# include "libunit_bonus.h"
+// uses a pair of sockets instead of a pipe
+// they are bi-directional - doesn't matter which end to close
+int	sigpipe_socket(void)
+{
+	int	sockets[2];
 
-void	bonus_launcher(t_libunit *libunit);
-
-#endif
+	if (socketpair(AF_UNIX, SOCK_STREAM, 0, sockets) == -1)
+		return (-1);
+	close(sockets[1]);
+	write(sockets[0], "paired socket is closed", 23);
+	return (-1);
+}

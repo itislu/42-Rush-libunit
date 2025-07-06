@@ -4,4 +4,5 @@ SRC	+=	$(addprefix mandatory/, \
 		02_ko.c \
 		03_sigsegv.c \
 		04_sigbus.c \
+		05_stackoverflow.c \
 )

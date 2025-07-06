@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.h                                            :+:      :+:    :+:   */
+/*   05_stackoverflow.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 08:29:59 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 12:28:32 by mweghofe         ###   ########.fr       */
+/*   Created: 2025/07/06 12:26:22 by mweghofe          #+#    #+#             */
+/*   Updated: 2025/07/06 12:31:01 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_H
-# define TESTS_H
+#include "libft/libft.h"
 
-int	ok(void);
-int	ko(void);
-int	sigsegv(void);
-int	sigbus(void);
-int	stack_overflow(void);
-
-#endif
+int	stack_overflow(void)
+{
+	if (ft_strlen("") == 0)
+		stack_overflow();
+	return (-1);
+}

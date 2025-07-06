@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 09:06:24 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 09:16:05 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 12:28:56 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	mandatory_launcher(t_libunit *libunit)
 	libunit_load(libunit, "ko", ko);
 	libunit_load(libunit, "sigsegv", sigsegv);
 	libunit_load(libunit, "sigbus", sigbus);
+	libunit_load(libunit, "stack overflow", stack_overflow);
 	libunit_launch(libunit);
 }
 // else

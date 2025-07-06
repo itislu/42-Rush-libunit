@@ -17,7 +17,7 @@ LIBS_LOCAL		=	$(LIB_ROOT_DIR)/framework/libunit_bonus.a \
 
 #	Files
 
-SOURCELIST_DIRS	:=	mandatory
+SOURCELIST_DIRS	:=	bonus
 SOURCELISTS		:=	$(addsuffix /sourcelist.mk,$(SOURCELIST_DIRS))
 SRC_DIR			:=	.
 SRC				:=	main_bonus.c

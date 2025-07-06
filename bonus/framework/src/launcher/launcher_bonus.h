@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:25:43 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 19:25:32 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:59:14 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ typedef enum e_result
 	TEST_SIGSEGV,
 	TEST_SIGBUS,
 	TEST_TIMEOUT,
+	TEST_SIGILL,
+	TEST_SIGABRT,
+	TEST_SIGFPE,
+	TEST_SIGPIPE,
 	TEST_SIGOTHER,
 	TEST_ERROR,
 }	t_result;

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launchers_bonus.h                                  :+:      :+:    :+:   */
+/*   11_sigabrt_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 08:17:41 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 16:57:53 by mweghofe         ###   ########.fr       */
+/*   Created: 2025/07/06 17:11:01 by mweghofe          #+#    #+#             */
+/*   Updated: 2025/07/06 17:13:52 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LAUNCHERS_BONUS_H
-# define LAUNCHERS_BONUS_H
+#include <assert.h>
 
-# include "libunit_bonus.h"
-
-void	bonus_launcher(t_libunit *libunit);
-
-#endif
+// assert prints to stderr
+int	sigabrt_assert(void)
+{
+	assert(0);
+	return (-1);
+}

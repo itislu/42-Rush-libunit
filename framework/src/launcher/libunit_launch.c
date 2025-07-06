@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 08:48:48 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 10:53:07 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ static bool	launch_test(t_unit_test	*test, t_result *test_result,
 		status = func();
 		exit(status);
 	}
-	else if (pid > 0)
+	else
 	{
-		waitpid(pid, &status, 0);
+		wait(&status);
 		*test_result = get_child_status(status);
 	}
 	return (true);

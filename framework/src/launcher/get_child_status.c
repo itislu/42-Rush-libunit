@@ -6,13 +6,13 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:43:06 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 21:18:41 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 10:53:35 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "launcher.h"
 #include <signal.h>
-#include <wait.h>
+#include <sys/wait.h>
 
 static t_result	exited_normally(int w_exitstat)
 {

@@ -1,8 +1,14 @@
-
+#include "libft/ft_printf.h"
 #include "libft/libft.h"
 #include "t_libunit.h"
+#include <unistd.h>
 
-t_libunit   *libunit_new(void)
+t_libunit	*libunit_new(void)
 {
-    return ft_calloc(1, sizeof(t_libunit));
+	t_libunit	*libunit;
+
+	libunit = ft_calloc(1, sizeof(t_libunit));
+	if (libunit == NULL)
+		ft_dprintf(STDERR_FILENO, "ERROR: Failed to allocate libunit\n");
+	return (libunit);
 }

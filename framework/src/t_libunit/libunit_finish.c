@@ -1,18 +1,17 @@
-#include "libft/ft_printf.h"
 #include "libunit.h"
 #include "t_libunit.h"
 #include "utils/utils.h"
+#include <unistd.h>
 
 // Prints the summary and frees libunit
 int	libunit_finish(t_libunit **libunit)
 {
-	int	result;
+	int	ret_val;
 
-	if ((*libunit)->total.n_success == (*libunit)->total.n_tests)
-		result = 0;
-	else
-		result = -1;
+	if (libunit == NULL || *libunit == NULL)
+		return (STATE_ERROR);
+	ret_val = (*libunit)->state;
 	prt_total_stats(&(*libunit)->total, "SUMMARY");
 	libunit_free(libunit);
-	return (result);
+	return (ret_val);
 }

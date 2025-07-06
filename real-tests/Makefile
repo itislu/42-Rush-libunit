@@ -17,7 +17,7 @@ LIBS_LOCAL		=	$(REPO_ROOT)/framework/libunit.a \
 
 #	Files
 
-SOURCELIST_DIRS	:=	
+SOURCELIST_DIRS	:=	ft_atoi ft_snprintf
 SOURCELISTS		:=	$(addsuffix /sourcelist.mk,$(SOURCELIST_DIRS))
 SRC_DIR			:=	.
 SRC				:=	main.c

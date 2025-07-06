@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launchers_bonus.h                                  :+:      :+:    :+:   */
+/*   tests_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 08:17:41 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/07 00:13:56 by ldulling         ###   ########.fr       */
+/*   Created: 2025/07/05 08:29:59 by ldulling          #+#    #+#             */
+/*   Updated: 2025/07/06 23:24:32 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LAUNCHERS_BONUS_H
-# define LAUNCHERS_BONUS_H
+#ifndef TESTS_BONUS_H
+# define TESTS_BONUS_H
 
-# include "libunit_bonus.h"
-
-void	ft_atoi_launcher(t_libunit *libunit);
-void	ft_printf_launcher(t_libunit *libunit);
-void	ft_snprintf_launcher(t_libunit *libunit);
+int	stdout_string(void);
+int	stdout_width(void);
+int	stdout_left_aligned(void);
+int	stdout_precision(void);
+int	stdout_asterisk(void);
+int	stdout_duplicate_flags(void);
 
 #endif

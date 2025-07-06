@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 07:45:27 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 15:49:05 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:30:22 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int	main(void)
 	libunit = libunit_new();
 	ft_atoi_launcher(libunit);
 	ft_snprintf_launcher(libunit);
+	ft_printf_launcher(libunit);
 	return (libunit_finish(&libunit));
 }

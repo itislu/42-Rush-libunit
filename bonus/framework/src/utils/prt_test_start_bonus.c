@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_bonus.h                                      :+:      :+:    :+:   */
+/*   prt_test_start_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 17:34:30 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 16:12:49 by mweghofe         ###   ########.fr       */
+/*   Created: 2025/07/06 15:56:47 by mweghofe          #+#    #+#             */
+/*   Updated: 2025/07/06 16:24:28 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_BONUS_H
-# define UTILS_BONUS_H
+#include "libft/ft_printf.h"
+#include "colors_bonus.h"
 
-# include "t_libunit/t_libunit_bonus.h"
-
-void	prt_total_stats(t_stats *stats, const char *name);
-void	prt_test_start(void);
-
-#endif
+void	prt_test_start(void)
+{
+	ft_printf("\n%sStarting new %slibunit%s test series...%s\n",
+		BOLD,
+		ITALIC,
+		RESET BOLD,
+		RESET);
+}

@@ -11,7 +11,7 @@ COLOR_MAKE		=	$(STY_GRE)
 
 #	Dependencies
 
-LIBS_LOCAL		=	$(LIB_ROOT_DIR)/framework/libunit.a \
+LIBS_LOCAL		=	$(LIB_ROOT_DIR)/framework/libunit_bonus.a \
 					$(REPO_ROOT)/libft/libft.a
 
 

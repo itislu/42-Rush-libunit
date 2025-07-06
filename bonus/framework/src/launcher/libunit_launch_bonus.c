@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libunit_launch_bonus_bonus.c                       :+:      :+:    :+:   */
+/*   libunit_launch_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 15:45:33 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:24:00 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	libunit_launch(t_libunit *libunit)
 		return ;
 	ft_bzero(&collection_stats, sizeof collection_stats);
 	node = libunit->tests;
+	ft_printf("\n"); // TODO can wrap in function or not... separation line
 	while (node != NULL)
 	{
 		test = node->content;

@@ -28,6 +28,7 @@ SRC				:=	$(addprefix $(SRC_DIR)/, \
 					t_libunit/unit_test_free_bonus.c \
 					t_libunit/unit_test_init_bonus.c \
 					utils/prt_total_stats_bonus.c \
+					utils/prt_test_start_bonus.c \
 )
 
 

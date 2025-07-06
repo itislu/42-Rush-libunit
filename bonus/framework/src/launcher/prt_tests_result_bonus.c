@@ -38,6 +38,6 @@ void	prt_test_result(const char *collection, const char *test_name,
 {
 	ft_printf("%s%s%s : %s%s%s : %s%s\n",
 		BOLD, collection, RESET,
-		ITALIC, test_name, RESET,
+		test_name,
 		BOLD, result_as_string(test_result));
 }

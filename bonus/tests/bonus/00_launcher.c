@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 09:06:24 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 19:55:43 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 22:07:38 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,13 @@ void	bonus_launcher(t_libunit *libunit)
 	libunit_load(libunit, "sigfpe_mod", sigfpe_mod);
 	libunit_load(libunit, "sigpipe_pipe", sigpipe_pipe);
 	libunit_load(libunit, "sigpipe_socket", sigpipe_socket);
+	libunit_load_stdout(libunit, "stdout_ok_match", stdout_ok_match,
+		"stop here -->   ");
+	libunit_load_stdout(libunit, "stdout_ok_mismatch", stdout_ok_mismatch,
+		"stop here --><--");
+	libunit_load_stdout(libunit, "stdout_ko_match", stdout_ko_match,
+		"stop here -->   ");
+	libunit_load_stdout(libunit, "stdout_ko_mismatch", stdout_ko_mismatch,
+		"stop here --><--");
 	libunit_launch(libunit);
 }

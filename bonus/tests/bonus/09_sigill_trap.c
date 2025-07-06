@@ -1,26 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests_bonus.h                                      :+:      :+:    :+:   */
+/*   09_sigill_trap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 08:29:59 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 17:01:43 by mweghofe         ###   ########.fr       */
+/*   Created: 2025/07/06 17:00:16 by mweghofe          #+#    #+#             */
+/*   Updated: 2025/07/06 17:04:49 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_BONUS_H
-# define TESTS_BONUS_H
-
-int	ok(void);
-int	ko(void);
-int	sigsegv(void);
-int	sigbus(void);
-int	stack_overflow(void);
-int	mmap_permissions(void);
-int	timeout(void);
-int	sigill_asm(void);
-int	sigill_trap(void);
-
-#endif
+int	sigill_trap(void)
+{
+	__builtin_trap();
+	return (-1);
+}

@@ -24,6 +24,7 @@ SRC				:=	$(addprefix $(SRC_DIR)/, \
 					t_libunit/libunit_free_bonus.c \
 					t_libunit/libunit_load_bonus.c \
 					t_libunit/libunit_new_bonus.c \
+					t_libunit/libunit_set_timeout.c \
 					t_libunit/libunit_start_collection_bonus.c \
 					t_libunit/unit_test_free_bonus.c \
 					t_libunit/unit_test_init_bonus.c \

@@ -3,7 +3,7 @@ include				$(shell git rev-parse --show-toplevel)/bonus/build/setup.mk
 
 # ***************************** CONFIGURATION ******************************** #
 
-NAME			:=	$(notdir $(REPO_SUBDIR))
+NAME			:=	$(notdir $(REPO_SUBDIR))_bonus
 MSG_PROGRESS	:=	"🧪"
 MSG_USAGE		?=	"Usage: ./$(NAME)"
 COLOR_MAKE		=	$(STY_GRE)

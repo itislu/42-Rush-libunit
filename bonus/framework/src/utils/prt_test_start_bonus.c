@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 15:56:47 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 16:21:41 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:24:28 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	prt_test_start(void)
 {
-	ft_printf("\n%sStarting new %slibunit%s test series...%s\n\n",
+	ft_printf("\n%sStarting new %slibunit%s test series...%s\n",
 		BOLD,
 		ITALIC,
 		RESET BOLD,

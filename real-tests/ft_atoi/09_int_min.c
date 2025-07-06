@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launchers.h                                        :+:      :+:    :+:   */
+/*   09_int_min.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 08:17:41 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 08:12:25 by ldulling         ###   ########.fr       */
+/*   Created: 2025/07/06 08:11:43 by ldulling          #+#    #+#             */
+/*   Updated: 2025/07/06 08:11:44 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LAUNCHERS_H
-# define LAUNCHERS_H
+#include "libft/libft.h"
 
-# include "libunit.h"
-
-void	ft_atoi_launcher(t_libunit *libunit);
-void	ft_snprintf_launcher(t_libunit *libunit);
-
-#endif
+int	int_min(void)
+{
+	if (ft_atoi("-2147483648") == -2147483648)
+		return (0);
+	return (-1);
+}

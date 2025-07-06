@@ -74,6 +74,9 @@ modes			:
 					if [ "$(RECOMPILE)" = "true" ]; then \
 						MAKELEVEL=$$(( $(MAKELEVEL) - 1 )) MSG_SUCCESS="" MSG_USAGE="" $(MAKE) re; \
 						MAKELEVEL=$$(( $(MAKELEVEL) - 1 )) $(MAKE) clean; \
+						for dir in $(LIB_DIRS); do \
+							$(MAKE) fclean --directory=$$dir; \
+						done; \
 					else \
 						MAKELEVEL=$$(( $(MAKELEVEL) - 1 )) MSG_USAGE="" $(MAKE) all; \
 					fi

@@ -6,15 +6,17 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:25:43 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 22:56:55 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:14:46 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LAUNCHER_BONUS_H
 # define LAUNCHER_BONUS_H
 
-#include "t_libunit/t_libunit_bonus.h"
-#include "t_libunit/t_unit_test_bonus.h"
+# include "t_libunit/t_libunit_bonus.h"
+# include "t_libunit/t_unit_test_bonus.h"
+
+# define BUFFER_SIZE 4096
 
 typedef enum e_result
 {

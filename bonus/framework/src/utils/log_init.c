@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 20:38:19 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 22:19:04 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:10:01 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	create_log(t_libunit *libunit)
 	file = ft_strjoin(libunit->name, ".log");
 	if (file != NULL)
 		libunit->log_fd = open(
-			file,
-			O_CREAT | O_APPEND | O_WRONLY,
-			0644);
+				file,
+				O_CREAT | O_APPEND | O_WRONLY,
+				0644);
 	if (file == NULL || libunit->log_fd == -1)
 	{
 		ft_dprintf(STDERR_FILENO, ITALIC"A log file couldn't be created. "\
@@ -53,15 +53,15 @@ static clock_t	log_timer(clock_t	cpu_time)
 	return (0);
 }
 
-void	start_log_timer()
+void	start_log_timer(void)
 {
 	log_timer(clock());
 }
 
-int	get_log_runtime()
+int	get_log_runtime(void)
 {
 	clock_t		now;
-	int		runtime_ms;
+	int			runtime_ms;
 
 	now = clock();
 	if (now == -1)

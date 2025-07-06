@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 23:00:23 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:20:48 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ static bool	launch_loop_success(t_libunit *libunit, t_unit_test *test,
 	t_result	result;
 
 	if (!launch_test(test, &result, libunit))
-		{
-			handle_error(libunit, test->name);
-			return (false);
-		}
+	{
+		handle_error(libunit, test->name);
+		return (false);
+	}
 	prt_test_result(libunit, test->name, result, test->runtime_ms);
 	update_collection_stats(collection_stats, result);
 	return (true);

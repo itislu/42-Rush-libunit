@@ -11,7 +11,7 @@ int	libunit_finish(t_libunit **libunit)
 	if (libunit == NULL || *libunit == NULL)
 		return (STATE_ERROR);
 	ret_val = (*libunit)->state;
-	prt_total_stats(&(*libunit)->total, "SUMMARY");
+	prt_total_stats(&(*libunit)->total, "SUMMARY", -1);
 	close((*libunit)->log_fd);
 	libunit_free(libunit);
 	return (ret_val);

@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 21:52:23 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 22:10:07 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ void	libunit_launch(t_libunit *libunit)
 			handle_error(libunit, test->name);
 			return ;
 		}
-		prt_test_result(libunit, test->name, result);
+		prt_test_result(libunit, test->name, result, test->runtime_ms);
 		update_collection_stats(&collection_stats, result);
 		node = node->next;
 	}
 	ft_lstclear(&libunit->tests, unit_test_free);
 	update_total_stats(libunit, &collection_stats);
-	prt_total_stats(&collection_stats, libunit->name);
+	prt_total_stats(&collection_stats, libunit->name, libunit->log_fd);
 }
 
 // Returns false if fork etc failed

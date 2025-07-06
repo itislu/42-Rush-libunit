@@ -21,7 +21,7 @@ DEP_SUBDIRS		:=	$(sort $(dir $(DEP)))
 
 #	Target categories
 
-BUILD_TARGETS	:=	all clear modes term test val valfd
+BUILD_TARGETS	:=	all bonus clear modes term test val valfd
 REBUILD_TARGETS	:=	opt re san
 DOC_TARGETS		:=	bear doxygen uml
 CLEAN_TARGETS	:=	clean fclean ffclean
@@ -41,7 +41,7 @@ PHONY_TARGETS	+=	$(HELP_TARGETS) $(HIDDEN_TARGETS) $(LIB_DIRS)
 
 # ***************************** BUILD TARGETS ******************************** #
 
-all				:
+all bonus		:
 					if $(READY); then \
 						$(call PRINTLN,"$(MSG_NO_CHANGE)"); \
 						$(call PRINTLN,"$(MSG_HELP)"); \

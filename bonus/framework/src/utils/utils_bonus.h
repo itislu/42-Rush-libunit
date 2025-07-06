@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 17:34:30 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 20:37:49 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 21:51:22 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,8 @@
 
 void	prt_total_stats(t_stats *stats, const char *name);
 void	prt_test_start(const char *collection_name);
+void	create_log(t_libunit *libunit);
+void	start_log_timer();
+long	get_log_runtime();
 
 #endif

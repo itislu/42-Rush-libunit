@@ -12,6 +12,7 @@ int	libunit_finish(t_libunit **libunit)
 		return (STATE_ERROR);
 	ret_val = (*libunit)->state;
 	prt_total_stats(&(*libunit)->total, "SUMMARY");
+	close((*libunit)->log_fd);
 	libunit_free(libunit);
 	return (ret_val);
 }

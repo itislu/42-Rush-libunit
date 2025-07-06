@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 09:06:24 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 17:47:37 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:54:03 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	bonus_launcher(t_libunit *libunit)
 	libunit_load(libunit, "stack_overflow", stack_overflow);
 	libunit_load(libunit, "mmap_permissions", mmap_permissions);
 	libunit_load(libunit, "timeout", timeout);
-	libunit_load(libunit, "sigill_undef_instr", sigill_undef_instr);
+	libunit_load(libunit, "sigill_ud2", sigill_ud2);
 	libunit_load(libunit, "sigill_byte_inject", sigill_byte_inject);
 	libunit_load(libunit, "sigill_trap", sigill_trap);
 	libunit_load(libunit, "sigabrt_abort", sigabrt_abort);

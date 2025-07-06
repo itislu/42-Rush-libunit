@@ -7,7 +7,7 @@ SRC	+=	$(addprefix bonus/, \
 		05_stackoverflow.c \
 		06_mmap_permissions.c \
 		07_timeout.c \
-		08_sigill_undef_instr.c \
+		08_sigill_ud2.c \
 		09_sigill_byte_inject.c \
 		10_sigill_trap.c \
 		11_sigabrt_assert.c \

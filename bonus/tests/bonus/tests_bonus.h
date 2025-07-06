@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 08:29:59 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 17:47:19 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:53:43 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	sigbus(void);
 int	stack_overflow(void);
 int	mmap_permissions(void);
 int	timeout(void);
-int	sigill_undef_instr(void);
+int	sigill_ud2(void);
 int	sigill_byte_inject(void);
 int	sigill_trap(void);
 int	sigabrt_abort(void);

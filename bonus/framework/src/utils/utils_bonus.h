@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 17:34:30 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 16:12:49 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 20:37:49 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include "t_libunit/t_libunit_bonus.h"
 
 void	prt_total_stats(t_stats *stats, const char *name);
-void	prt_test_start(void);
+void	prt_test_start(const char *collection_name);
 
 #endif

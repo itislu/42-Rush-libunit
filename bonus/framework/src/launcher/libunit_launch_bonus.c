@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 19:00:49 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 20:36:58 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	libunit_launch(t_libunit *libunit)
 
 	if (libunit == NULL)
 		return ;
+	prt_test_start(libunit->name);
 	ft_bzero(&collection_stats, sizeof collection_stats);
 	node = libunit->tests;
-	ft_printf("\n");
 	while (node != NULL)
 	{
 		test = node->content;

@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 18:13:25 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 19:29:20 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:56:35 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ bool	test_stdout(t_unit_test *test, t_result *test_result,
 	t_result	stdout_result;
 
 	if (pipe(pipe_fd) == -1)
-		return (libunit->state = STATE_ERROR, false);
+		return (false);
 	pid = fork();
 	if (pid == -1)
-		return (close(pipe_fd[0]), close(pipe_fd[1]), 
-			libunit->state = STATE_ERROR, false);
+		return (close(pipe_fd[0]), close(pipe_fd[1]), false);
 	if (pid == 0)
 		child(test, libunit, pipe_fd);
 	close(pipe_fd[1]);

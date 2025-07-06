@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 08:29:59 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 17:34:29 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:47:19 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int	sigabrt_abort(void);
 int	sigabrt_assert(void);
 int	sigfpe_div(void);
 int	sigfpe_mod(void);
+int	sigpipe_pipe(void);
+int	sigpipe_socket(void);
 
 #endif

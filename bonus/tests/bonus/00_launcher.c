@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 09:06:24 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 17:35:04 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:47:37 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ void	bonus_launcher(t_libunit *libunit)
 	libunit_load(libunit, "sigabrt_assert", sigabrt_assert);
 	libunit_load(libunit, "sigfpe_div", sigfpe_div);
 	libunit_load(libunit, "sigfpe_mod", sigfpe_mod);
+	libunit_load(libunit, "sigpipe_pipe", sigpipe_pipe);
+	libunit_load(libunit, "sigpipe_socket", sigpipe_socket);
 	libunit_launch(libunit);
 }

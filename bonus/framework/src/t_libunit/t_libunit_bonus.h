@@ -15,7 +15,7 @@
 
 # include "libft/libft.h"
 
-# define DEFAULT_TIMEOUT 3
+# define DEFAULT_TIMEOUT 1
 
 typedef enum e_state
 {

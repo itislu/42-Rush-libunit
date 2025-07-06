@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 08:29:59 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 19:53:43 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 22:06:24 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,9 @@ int	sigfpe_div(void);
 int	sigfpe_mod(void);
 int	sigpipe_pipe(void);
 int	sigpipe_socket(void);
+int	stdout_ok_match(void);
+int	stdout_ok_mismatch(void);
+int	stdout_ko_match(void);
+int	stdout_ko_mismatch(void);
 
 #endif

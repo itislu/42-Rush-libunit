@@ -6,31 +6,29 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 22:50:09 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:00:23 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "launcher_bonus.h"
-#include "libft/ft_printf.h"
 #include "libft/libft.h"
 #include "libunit_bonus.h"
 #include "t_libunit/t_libunit_bonus.h"
 #include "t_libunit/t_unit_test_bonus.h"
 #include "utils/utils_bonus.h"
-#include <unistd.h>
 
+static bool	launch_loop_success(t_libunit *libunit, t_unit_test *test,
+				t_stats *collection_stats);
 static bool	launch_test(t_unit_test	*test, t_result *test_result,
 				t_libunit *libunit);
 static void	update_collection_stats(t_stats *collection, t_result result);
 static void	update_total_stats(t_libunit *libunit, const t_stats *collection);
-static void	handle_error(t_libunit *libunit, const char *test_name);
 
 void	libunit_launch(t_libunit *libunit)
 {
 	t_unit_test	*test;
 	t_list		*node;
 	t_stats		collection_stats;
-	t_result	result;
 
 	if (libunit == NULL)
 		return ;
@@ -42,18 +40,29 @@ void	libunit_launch(t_libunit *libunit)
 	while (node != NULL)
 	{
 		test = node->content;
-		if (!launch_test(test, &result, libunit))
-		{
-			handle_error(libunit, test->name);
+		if (!launch_loop_success(libunit, test, &collection_stats))
 			return ;
-		}
-		prt_test_result(libunit, test->name, result, test->runtime_ms);
-		update_collection_stats(&collection_stats, result);
 		node = node->next;
 	}
 	ft_lstclear(&libunit->tests, unit_test_free);
 	update_total_stats(libunit, &collection_stats);
 	prt_total_stats(&collection_stats, libunit->name, libunit->log_fd);
+}
+
+// returns false if launch_test failed
+static bool	launch_loop_success(t_libunit *libunit, t_unit_test *test,
+				t_stats *collection_stats)
+{
+	t_result	result;
+
+	if (!launch_test(test, &result, libunit))
+		{
+			handle_error(libunit, test->name);
+			return (false);
+		}
+	prt_test_result(libunit, test->name, result, test->runtime_ms);
+	update_collection_stats(collection_stats, result);
+	return (true);
 }
 
 // Returns false if fork etc failed
@@ -87,15 +96,4 @@ static void	update_total_stats(t_libunit *libunit, const t_stats *collection)
 	{
 		libunit->state = STATE_NOT_OK;
 	}
-}
-
-static void	handle_error(t_libunit *libunit, const char *test_name)
-{
-	libunit->state = STATE_ERROR;
-	ft_dprintf(STDERR_FILENO,
-		"\nERROR: An error occurred during test-launch-execution for %s:%s. "
-		"The %s collection of tests will abort. "
-		"If there are any more collections, they will continue.\n\n",
-		libunit->name, test_name, libunit->name);
-	ft_lstclear(&libunit->tests, unit_test_free);
 }

@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:25:43 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 21:54:04 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 22:56:55 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ bool		test_basic(t_unit_test *test, t_result *test_result,
 				t_libunit *libunit);
 bool		test_stdout(t_unit_test *test, t_result *test_result,
 				t_libunit *libunit);
+void		handle_error(t_libunit *libunit, const char *test_name);
 
 #endif

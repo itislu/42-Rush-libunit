@@ -5,4 +5,5 @@ SRC	+=	$(addprefix mandatory/, \
 		03_sigsegv.c \
 		04_sigbus.c \
 		05_stackoverflow.c \
+		06_mmap_permissions.c \
 )

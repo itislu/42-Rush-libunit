@@ -21,8 +21,8 @@ void	mandatory_launcher(t_libunit *libunit)
 	libunit_load(libunit, "ko", ko);
 	libunit_load(libunit, "sigsegv", sigsegv);
 	libunit_load(libunit, "sigbus", sigbus);
-	libunit_load(libunit, "stack overflow", stack_overflow);
-	libunit_load(libunit, "mmap permissions", mmap_permissions);
+	libunit_load(libunit, "stack_overflow", stack_overflow);
+	libunit_load(libunit, "mmap_permissions", mmap_permissions);
 	libunit_launch(libunit);
 }
 // else

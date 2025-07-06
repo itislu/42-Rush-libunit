@@ -12,6 +12,8 @@ static bool	load(t_libunit *libunit, const char *name, int (*func)(void));
 // TODO Change libunit state on load error?
 bool	libunit_load(t_libunit *libunit, const char *name, int (*func)(void))
 {
+	if (libunit == NULL)
+		return (false);
 	if (!load(libunit, name, func))
 	{
 		ft_dprintf(STDERR_FILENO, "ERROR: Failed to load test %s:%s\n", 

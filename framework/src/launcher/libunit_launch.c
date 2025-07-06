@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 08:33:00 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 08:48:48 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <stdbool.h>
 #include <sys/wait.h>
 
-static void	launch_test(t_unit_test	*test, t_result *test_result,
+static bool	launch_test(t_unit_test	*test, t_result *test_result,
 				t_libunit *libunit);
 static void	update_collection_stats(t_stats *collection, t_result result);
 static void	update_total_stats(t_libunit *libunit, const t_stats *collection);
@@ -35,13 +35,14 @@ void	libunit_launch(t_libunit *libunit)
 	t_stats		collection_stats;
 	t_result	result;
 
+	if (libunit == NULL)
+		return ;
 	ft_bzero(&collection_stats, sizeof collection_stats);
 	node = libunit->tests;
 	while (node != NULL)
 	{
 		test = node->content;
-		launch_test(test, &result, libunit);
-		if (libunit->state == STATE_ERROR)
+		if (!launch_test(test, &result, libunit))
 		{
 			prt_error(libunit->name, test->name);
 			ft_lstclear(&libunit->tests, unit_test_free);
@@ -57,7 +58,7 @@ void	libunit_launch(t_libunit *libunit)
 }
 
 // Returns false if fork etc failed
-static void	launch_test(t_unit_test	*test, t_result *test_result,
+static bool	launch_test(t_unit_test	*test, t_result *test_result,
 				t_libunit *libunit)
 {
 	int			pid;
@@ -66,6 +67,11 @@ static void	launch_test(t_unit_test	*test, t_result *test_result,
 
 	func = test->func;
 	pid = fork();
+	if (pid == -1)
+	{
+		libunit->state = STATE_ERROR;
+		return (false);
+	}
 	if (pid == 0)
 	{
 		libunit_free(&libunit);
@@ -77,8 +83,7 @@ static void	launch_test(t_unit_test	*test, t_result *test_result,
 		waitpid(pid, &status, 0);
 		*test_result = get_child_status(status);
 	}
-	else
-		libunit->state = STATE_ERROR;
+	return (true);
 }
 
 static void	update_collection_stats(t_stats *collection, t_result result)

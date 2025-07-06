@@ -16,7 +16,7 @@
 // prints all stats of t_stats, works with collection & total stats
 void	prt_total_stats(t_stats *stats, const char *name)
 {
-	ft_printf("\n%s :: total tests %i :: success %i :: fail %i :: crash %i\n\n",
+	ft_printf("\n%s :: total %i :: success %i :: fail %i :: crash %i\n\n",
 		name,
 		stats->n_tests,
 		stats->n_success,

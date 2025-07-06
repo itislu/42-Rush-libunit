@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libunit.h                        		            :+:      :+:    :+:   */
+/*   05_asterisk.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 10:13:27 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/05 14:28:49 by ldulling         ###   ########.fr       */
+/*   Created: 2025/07/06 07:41:21 by ldulling          #+#    #+#             */
+/*   Updated: 2025/07/06 07:41:22 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_LIBUNIT_H
-# define T_LIBUNIT_H
+#include "libft/ft_printf.h"
+#include <stdio.h>
+#include <string.h>
 
-#include "libft/libft.h"
-
-typedef enum e_state
+int	asterisk(void)
 {
-	STATE_OK = 0,
-	STATE_NOT_OK = -1,
-	STATE_ERROR = 1
-}	t_state;
+	char	ft_buffer[128];
+	char	og_buffer[128];
 
-typedef struct s_stats
-{
-	unsigned	n_tests;
-	unsigned	n_success;
-	unsigned	n_fail;
-	unsigned	n_crash;
-}	t_stats;
-
-typedef struct s_libunit
-{
-	const char	*name;
-	t_list		*tests;
-	t_stats		total;
-	t_state		state;
-}	t_libunit;
-
-#endif
+	ft_snprintf(ft_buffer, sizeof(ft_buffer), "%-*.*s", 32, 4, "test_string");
+	snprintf(og_buffer, sizeof(og_buffer), "%-*.*s", 32, 4, "test_string");
+	if (strcmp(ft_buffer, og_buffer) == 0)
+		return (0);
+	return (-1);
+}

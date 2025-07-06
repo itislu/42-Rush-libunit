@@ -1,19 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/06 09:04:35 by ldulling          #+#    #+#             */
+/*   Updated: 2025/07/06 09:16:35 by ldulling         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "launchers.h"
-#include "libft/ft_printf.h"
 #include "libunit.h"
 
-int main(void)
+int	main(void)
 {
-    ft_printf("Running all tests...\n");
+	t_libunit	*libunit;
 
-    t_libunit *libunit;
-
-    libunit = libunit_new();
-    KO_launcher(libunit);
-    OK_launcher(libunit);
-    SIGBUS_launcher(libunit);
-    SIGSEGV_launcher(libunit);
-
-    // libunit print total results (libunit struct)
-    return (libunit_finish(&libunit));
+	libunit = libunit_new();
+	mandatory_launcher(libunit);
+	return (libunit_finish(&libunit));
 }

@@ -4,7 +4,7 @@ include				$(shell git rev-parse --show-toplevel)/build/setup.mk
 # ***************************** CONFIGURATION ******************************** #
 
 NAME			:=	$(basename $(REPO_SUBDIR))
-MSG_PROGRESS	:=	"🛠️ "
+MSG_PROGRESS	:=	"🧪"
 MSG_USAGE		?=	"Usage: ./$(NAME)"
 COLOR_MAKE		=	$(STY_GRE)
 
@@ -17,7 +17,7 @@ LIBS_LOCAL		=	$(REPO_ROOT)/framework/libunit.a \
 
 #	Files
 
-SOURCELIST_DIRS	:=	KO OK SIGBUS SIGSEGV
+SOURCELIST_DIRS	:=	mandatory
 SOURCELISTS		:=	$(addsuffix /sourcelist.mk,$(SOURCELIST_DIRS))
 SRC_DIR			:=	.
 SRC				:=	main.c

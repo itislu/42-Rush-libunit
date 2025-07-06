@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_minus_one.c                                     :+:      :+:    :+:   */
+/*   05_stackoverflow.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 11:14:55 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/05 14:22:33 by ldulling         ###   ########.fr       */
+/*   Created: 2025/07/06 12:26:22 by mweghofe          #+#    #+#             */
+/*   Updated: 2025/07/06 12:31:01 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	minus_one(void)
+#include "libft/libft.h"
+
+int	stack_overflow(void)
 {
+	if (ft_strlen("") == 0)
+		stack_overflow();
 	return (-1);
 }

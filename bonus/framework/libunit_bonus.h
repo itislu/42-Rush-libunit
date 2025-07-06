@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libunit_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 10:13:27 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 15:50:08 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:32:27 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ bool		libunit_load(
 void		libunit_launch(t_libunit *libunit);
 t_libunit	*libunit_new(void);
 void		libunit_start_collection(t_libunit *libunit, const char *name);
+void		libunit_set_timeout(t_libunit *libunit, unsigned timeout);
 
 #endif

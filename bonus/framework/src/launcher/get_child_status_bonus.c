@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_child_status_bonus_bonus.c                     :+:      :+:    :+:   */
+/*   get_child_status_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:43:06 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 15:44:47 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:38:05 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static t_result	terminated_by_signal(int w_termsig)
 		return (TEST_SIGSEGV);
 	else if (w_termsig == SIGBUS)
 		return (TEST_SIGBUS);
+	else if (w_termsig == SIGALRM)
+		return (TEST_TIMEOUT);
 	else
 		return (TEST_SIGOTHER);
 }

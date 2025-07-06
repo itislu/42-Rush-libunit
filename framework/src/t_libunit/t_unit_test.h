@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_unit_test.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 10:13:27 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 08:17:26 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:19:26 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_unit_test
 	int			(*func)(void);
 }	t_unit_test;
 
-void	unit_test_free(void *content);
-void	unit_test_init(t_unit_test *unit_test, const char *name, int (*func)(void));
+void		unit_test_free(void *content);
+t_unit_test	*unit_test_new(const char *name, int (*func)(void));
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 16:33:39 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:43:49 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void	update_collection_stats(t_stats *collection, t_result result)
 {
 	if (result == TEST_OK)
 		collection->n_success += 1;
-	else if (result == TEST_KO)
+	else if (result == TEST_KO || result == TEST_TIMEOUT)
 		collection->n_fail += 1;
 	else
 		collection->n_crash += 1;

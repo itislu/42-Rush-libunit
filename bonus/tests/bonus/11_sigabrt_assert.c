@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests_bonus.h                                      :+:      :+:    :+:   */
+/*   11_sigabrt_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 08:29:59 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 17:12:49 by mweghofe         ###   ########.fr       */
+/*   Created: 2025/07/06 17:11:01 by mweghofe          #+#    #+#             */
+/*   Updated: 2025/07/06 17:13:52 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_BONUS_H
-# define TESTS_BONUS_H
+#include <assert.h>
 
-int	ok(void);
-int	ko(void);
-int	sigsegv(void);
-int	sigbus(void);
-int	stack_overflow(void);
-int	mmap_permissions(void);
-int	timeout(void);
-int	sigill_asm(void);
-int	sigill_trap(void);
-int	sigabrt_abort(void);
-int	sigabrt_assert(void);
-
-#endif
+// assert prints to stdout
+int	sigabrt_assert(void)
+{
+	assert(0);
+	return (-1);
+}

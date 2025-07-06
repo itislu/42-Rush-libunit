@@ -9,4 +9,6 @@ SRC	+=	$(addprefix bonus/, \
 		07_timeout.c \
 		08_sigill_asm.c \
 		09_sigill_trap.c \
+		10_sigabrt_abort.c \
+		11_sigabrt_assert.c \
 )

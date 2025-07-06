@@ -6,12 +6,13 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 10:13:27 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/05 18:42:11 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 08:17:26 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_UNIT_TEST_H
 # define T_UNIT_TEST_H
+
 typedef struct s_unit_test	
 {
 	const char	*name;

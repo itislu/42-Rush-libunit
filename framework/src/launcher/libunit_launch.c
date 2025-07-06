@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libunit_launch.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/05 21:20:42 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 08:33:00 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	launch_test(t_unit_test	*test, t_result *test_result,
 				t_libunit *libunit);
 static void	update_collection_stats(t_stats *collection, t_result result);
 static void	update_total_stats(t_libunit *libunit, const t_stats *collection);
-static void	prt_error(const char *collection_name);
+static void	prt_error(const char *collection_name, const char *test_name);
 
 void	libunit_launch(t_libunit *libunit)
 {
@@ -43,7 +43,7 @@ void	libunit_launch(t_libunit *libunit)
 		launch_test(test, &result, libunit);
 		if (libunit->state == STATE_ERROR)
 		{
-			prt_error(libunit->name);
+			prt_error(libunit->name, test->name);
 			ft_lstclear(&libunit->tests, unit_test_free);
 			return ;
 		}
@@ -105,11 +105,11 @@ static void	update_total_stats(t_libunit *libunit, const t_stats *collection)
 	}
 }
 
-static void	prt_error(const char *collection_name)
+static void	prt_error(const char *collection_name, const char *test_name)
 {
 	ft_dprintf(STDERR_FILENO,
-		"\nAn error occuring during test-launch-execution for %s. "
-		"This collection of tests will abort. "
+		"\nERROR: An error occuring during test-launch-execution for %s:%s. "
+		"The %s collection of tests will abort. "
 		"If there are any more collections, they will continue.\n\n",
-		collection_name);
+		collection_name, test_name, collection_name);
 }

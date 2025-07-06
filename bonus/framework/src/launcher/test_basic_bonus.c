@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 18:12:51 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 21:15:43 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:20:24 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 bool	test_basic(t_unit_test *test, t_result *test_result,
 			t_libunit *libunit)
 {
-	int				(* const func)(void) = test->func;
-	const unsigned	timeout = libunit->timeout;
-	int				pid;
-	int				status;
+	int	pid;
+	int	status;
+	int	(*func)(void);
 
+	const unsigned timeout = libunit->timeout;
+	func = test->func;
 	pid = fork();
 	if (pid == -1)
 		return (false);
@@ -38,7 +39,7 @@ bool	test_basic(t_unit_test *test, t_result *test_result,
 		status = func();
 		exit(status);
 	}
-	start_log_timer(); // TODO before or after fork?
+	start_log_timer();
 	*test_result = get_child_status();
 	test->runtime_ms = get_log_runtime();
 	if (*test_result == TEST_ERROR)

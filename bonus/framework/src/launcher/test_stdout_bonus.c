@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 18:13:25 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 21:21:34 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:19:13 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	test_stdout(t_unit_test *test, t_result *test_result,
 		return (close(pipe_fd[0]), close(pipe_fd[1]), false);
 	if (pid == 0)
 		child(test, libunit, pipe_fd);
-	start_log_timer(); // TODO before or after fork?
+	start_log_timer();
 	close(pipe_fd[1]);
 	stdout_result = test_fd_content_match(pipe_fd[0], test->expected_output);
 	close(pipe_fd[0]);
@@ -54,10 +54,11 @@ bool	test_stdout(t_unit_test *test, t_result *test_result,
 
 static void	child(t_unit_test *test, t_libunit *libunit, int pipe_fd[2])
 {
-	int	(* const func)(void) = test->func;
 	int	status;
-	const unsigned	timeout = libunit->timeout;
+	int	(*func)(void);
 
+	const unsigned timeout = libunit->timeout;
+	func = test->func;
 	close(pipe_fd[0]);
 	status = dup2(pipe_fd[1], STDOUT_FILENO);
 	close(pipe_fd[1]);
@@ -72,8 +73,7 @@ static void	child(t_unit_test *test, t_libunit *libunit, int pipe_fd[2])
 
 static t_result	test_fd_content_match(int fd, const char *expected_output)
 {
-	const size_t	buffer_size = 4096;
-	char			buffer[buffer_size];
+	char			buffer[BUFFER_SIZE];
 	ssize_t			bytes_read;
 	size_t			total_bytes_read;
 	t_result		test_result;
@@ -82,7 +82,7 @@ static t_result	test_fd_content_match(int fd, const char *expected_output)
 	test_result = TEST_OK;
 	while (true)
 	{
-		bytes_read = read(fd, buffer, buffer_size - 1);
+		bytes_read = read(fd, buffer, BUFFER_SIZE - 1);
 		if (bytes_read == -1)
 			return (TEST_ERROR);
 		if (bytes_read == 0)

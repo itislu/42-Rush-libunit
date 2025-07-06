@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_unit_test_bonus.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 10:13:27 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 16:34:21 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 21:36:10 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_unit_test
 	int			(*func)(void);
 	t_test_type	type;
 	const char	*expected_output;
+	int			runtime_ms;
 }	t_unit_test;
 
 void		unit_test_free(void *content);

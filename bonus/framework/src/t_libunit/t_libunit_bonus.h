@@ -38,6 +38,7 @@ typedef struct s_libunit
 	const char	*name;
 	size_t		max_name_len;
 	unsigned	timeout;
+	int			log_fd;
 	t_list		*tests;
 	t_stats		total;
 	t_state		state;

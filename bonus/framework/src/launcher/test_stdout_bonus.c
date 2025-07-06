@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_stdout_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 18:13:25 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 19:56:35 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 21:21:34 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libunit_bonus.h"
 #include "t_libunit/t_libunit_bonus.h"
 #include "t_libunit/t_unit_test_bonus.h"
+#include "utils/utils_bonus.h"
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
@@ -38,10 +39,12 @@ bool	test_stdout(t_unit_test *test, t_result *test_result,
 		return (close(pipe_fd[0]), close(pipe_fd[1]), false);
 	if (pid == 0)
 		child(test, libunit, pipe_fd);
+	start_log_timer(); // TODO before or after fork?
 	close(pipe_fd[1]);
 	stdout_result = test_fd_content_match(pipe_fd[0], test->expected_output);
 	close(pipe_fd[0]);
 	*test_result = get_child_status();
+	test->runtime_ms = get_log_runtime();
 	if (*test_result == TEST_ERROR || stdout_result == TEST_ERROR)
 		return (false);
 	if (*test_result == TEST_OK && stdout_result == TEST_KO)

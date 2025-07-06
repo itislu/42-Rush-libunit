@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prt_total_stats_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 17:30:32 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 20:32:51 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 22:10:24 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "utils/colors_bonus.h"
 
 // prints all stats of t_stats, works with collection & total stats
-void	prt_total_stats(t_stats *stats, const char *name)
+void	prt_total_stats(t_stats *stats, const char *name, int log_fd)
 {
 	const char	*line_format = RESET BOLD;
 
@@ -30,6 +30,16 @@ void	prt_total_stats(t_stats *stats, const char *name)
 		RED, line_format,
 		stats->n_crash, RESET);
 	ft_printf("\n");
+	if (log_fd == -1)
+		return ;
+	ft_dprintf(
+		log_fd,
+		"%s :: total %i :: success %i :: fail %i :: crash %i\n",
+		name,
+		stats->n_tests,
+		stats->n_success,
+		stats->n_fail,
+		stats->n_crash);
 }
 
 /*

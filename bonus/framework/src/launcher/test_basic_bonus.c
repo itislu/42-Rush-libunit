@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_basic_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 18:12:51 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 19:30:31 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 21:15:43 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libunit_bonus.h"
 #include "t_libunit/t_libunit_bonus.h"
 #include "t_libunit/t_unit_test_bonus.h"
+#include "utils/utils_bonus.h"
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <unistd.h>
@@ -37,7 +38,9 @@ bool	test_basic(t_unit_test *test, t_result *test_result,
 		status = func();
 		exit(status);
 	}
+	start_log_timer(); // TODO before or after fork?
 	*test_result = get_child_status();
+	test->runtime_ms = get_log_runtime();
 	if (*test_result == TEST_ERROR)
 		return (false);
 	return (true);

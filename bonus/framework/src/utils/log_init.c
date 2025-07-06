@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 20:38:19 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 21:36:08 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 21:41:53 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@
 
 void	create_log(t_libunit *libunit)
 {
-	//TODO get a path from somewhere
-	const char	*path;
 	const char	*file;
 
-	(void) path;
 	file = ft_strjoin(libunit->name, ".log");
 	libunit->log_fd = open(
 		file,
@@ -37,7 +34,7 @@ void	create_log(t_libunit *libunit)
 	}
 	ft_printf(ITALIC"Log file \'%s\' successfully created.\n\n"RESET, file);
 }
-#include <stdio.h>
+
 static clock_t	log_timer(clock_t	cpu_time)
 {
 	static clock_t	start_clock;

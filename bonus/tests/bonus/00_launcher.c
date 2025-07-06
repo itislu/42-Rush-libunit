@@ -13,7 +13,6 @@
 #include "libunit_bonus.h"
 #include "tests_bonus.h"
 
-// #ifdef TEST_KO
 void	bonus_launcher(t_libunit *libunit)
 {
 	libunit_start_collection(libunit, "bonus");

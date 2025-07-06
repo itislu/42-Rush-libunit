@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   launcher_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:25:43 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 16:37:19 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:25:32 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LAUNCHER_BONUS_H
 # define LAUNCHER_BONUS_H
+
+#include "t_libunit/t_libunit_bonus.h"
+#include "t_libunit/t_unit_test_bonus.h"
 
 typedef enum e_result
 {
@@ -21,10 +24,15 @@ typedef enum e_result
 	TEST_SIGBUS,
 	TEST_TIMEOUT,
 	TEST_SIGOTHER,
+	TEST_ERROR,
 }	t_result;
 
-t_result	get_child_status(int status);
+t_result	get_child_status(void);
 void		prt_test_result(const char *collection, const char *test_name,
 				t_result test_result);
+bool		test_basic(t_unit_test *test, t_result *test_result,
+				t_libunit *libunit);
+bool		test_stdout(t_unit_test *test, t_result *test_result,
+				t_libunit *libunit);
 
 #endif

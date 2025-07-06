@@ -3,30 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   libunit_launch_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 16:43:49 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:00:49 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "launcher_bonus.h"
 #include "libft/ft_printf.h"
 #include "libft/libft.h"
-#include "t_libunit/t_unit_test_bonus.h"
-#include "t_libunit/t_libunit_bonus.h"
-#include "utils/utils_bonus.h"
-#include "launcher_bonus.h"
 #include "libunit_bonus.h"
+#include "t_libunit/t_libunit_bonus.h"
+#include "t_libunit/t_unit_test_bonus.h"
+#include "utils/utils_bonus.h"
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <sys/wait.h>
 
 static bool	launch_test(t_unit_test	*test, t_result *test_result,
 				t_libunit *libunit);
 static void	update_collection_stats(t_stats *collection, t_result result);
 static void	update_total_stats(t_libunit *libunit, const t_stats *collection);
-static void	prt_error(const char *collection_name, const char *test_name);
+static void	handle_error(t_libunit *libunit, const char *test_name);
 
 void	libunit_launch(t_libunit *libunit)
 {
@@ -39,14 +36,13 @@ void	libunit_launch(t_libunit *libunit)
 		return ;
 	ft_bzero(&collection_stats, sizeof collection_stats);
 	node = libunit->tests;
-	ft_printf("\n"); // TODO can wrap in function or not... separation line
+	ft_printf("\n");
 	while (node != NULL)
 	{
 		test = node->content;
 		if (!launch_test(test, &result, libunit))
 		{
-			prt_error(libunit->name, test->name);
-			ft_lstclear(&libunit->tests, unit_test_free);
+			handle_error(libunit, test->name);
 			return ;
 		}
 		prt_test_result(libunit->name, test->name, result);
@@ -59,33 +55,12 @@ void	libunit_launch(t_libunit *libunit)
 }
 
 // Returns false if fork etc failed
-static bool	launch_test(t_unit_test	*test, t_result *test_result,
+static bool	launch_test(t_unit_test *test, t_result *test_result,
 				t_libunit *libunit)
 {
-	int			pid;
-	int			status;
-	int			(*func)(void);
-
-	func = test->func;
-	pid = fork();
-	if (pid == -1)
-	{
-		libunit->state = STATE_ERROR;
-		return (false);
-	}
-	if (pid == 0)
-	{
-		alarm(libunit->timeout);
-		libunit_free(&libunit);
-		status = func();
-		exit(status);
-	}
-	else
-	{
-		wait(&status);
-		*test_result = get_child_status(status);
-	}
-	return (true);
+	if (test->type == TYPE_STDOUT)
+		return (test_stdout(test, test_result, libunit));
+	return (test_basic(test, test_result, libunit));
 }
 
 static void	update_collection_stats(t_stats *collection, t_result result)
@@ -112,11 +87,13 @@ static void	update_total_stats(t_libunit *libunit, const t_stats *collection)
 	}
 }
 
-static void	prt_error(const char *collection_name, const char *test_name)
+static void	handle_error(t_libunit *libunit, const char *test_name)
 {
+	libunit->state = STATE_ERROR;
 	ft_dprintf(STDERR_FILENO,
-		"\nERROR: An error occuring during test-launch-execution for %s:%s. "
+		"\nERROR: An error occurred during test-launch-execution for %s:%s. "
 		"The %s collection of tests will abort. "
 		"If there are any more collections, they will continue.\n\n",
-		collection_name, test_name, collection_name);
+		libunit->name, test_name, libunit->name);
+	ft_lstclear(&libunit->tests, unit_test_free);
 }

@@ -20,6 +20,8 @@ SRC				:=	$(addprefix $(SRC_DIR)/, \
 					launcher/get_child_status_bonus.c \
 					launcher/libunit_launch_bonus.c \
 					launcher/prt_tests_result_bonus.c \
+					launcher/test_basic_bonus.c \
+					launcher/test_stdout_bonus.c \
 					t_libunit/libunit_finish_bonus.c \
 					t_libunit/libunit_free_bonus.c \
 					t_libunit/libunit_load_bonus.c \

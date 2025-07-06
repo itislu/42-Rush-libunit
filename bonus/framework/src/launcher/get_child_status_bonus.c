@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_child_status_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:43:06 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 16:38:05 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:25:19 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 static t_result	exited_normally(int w_exitstat)
 {
+	if (w_exitstat == TEST_ERROR)
+		return (TEST_ERROR);
 	if (w_exitstat != 0)
 		return (TEST_KO);
 	else
@@ -34,8 +36,12 @@ static t_result	terminated_by_signal(int w_termsig)
 		return (TEST_SIGOTHER);
 }
 
-t_result	get_child_status(int status)
+t_result	get_child_status(void)
 {
+	int	status;
+
+	if (wait(&status) == -1)
+		return (TEST_ERROR);
 	if (WIFEXITED(status))
 		return (exited_normally(WEXITSTATUS(status)));
 	else if (WIFSIGNALED(status))

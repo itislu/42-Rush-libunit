@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libunit_finish_bonus.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/06 23:10:33 by mweghofe          #+#    #+#             */
+/*   Updated: 2025/07/06 23:10:33 by mweghofe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libunit_bonus.h"
 #include "t_libunit_bonus.h"
 #include "utils/utils_bonus.h"

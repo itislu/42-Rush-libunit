@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libunit_load_bonus.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/06 23:10:48 by mweghofe          #+#    #+#             */
+/*   Updated: 2025/07/06 23:11:13 by mweghofe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft/ft_printf.h"
 #include "libft/libft.h"
 #include "libunit_bonus.h"
@@ -16,7 +28,7 @@ bool	libunit_load(t_libunit *libunit, const char *name, int (*func)(void))
 	return (handle_load(libunit, name, func, NULL));
 }
 
-bool	libunit_load_stdout(t_libunit *libunit, const char *name, 
+bool	libunit_load_stdout(t_libunit *libunit, const char *name,
 			int (*func)(void), const char *expected_output)
 {
 	return (handle_load(libunit, name, func, expected_output));
@@ -30,7 +42,7 @@ static bool	handle_load(t_libunit *libunit, const char *name, int (*func)(void),
 	if (!load(libunit, name, func, expected_output))
 	{
 		libunit->state = STATE_ERROR;
-		ft_dprintf(STDERR_FILENO, "ERROR: Failed to load test %s:%s\n", 
+		ft_dprintf(STDERR_FILENO, "ERROR: Failed to load test %s:%s\n",
 			libunit->name, name);
 		return (false);
 	}

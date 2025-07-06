@@ -26,7 +26,7 @@ SRC				:=	$(addprefix $(SRC_DIR)/, \
 					t_libunit/libunit_new.c \
 					t_libunit/libunit_start_collection.c \
 					t_libunit/unit_test_free.c \
-					t_libunit/unit_test_init.c \
+					t_libunit/unit_test_new.c \
 					utils/prt_total_stats.c \
 )
 

@@ -4,7 +4,6 @@
 #include "t_libunit.h"
 #include "t_unit_test.h"
 #include <stdbool.h>
-#include <stdlib.h>
 #include <unistd.h>
 
 static bool	load(t_libunit *libunit, const char *name, int (*func)(void));
@@ -27,13 +26,12 @@ static bool	load(t_libunit *libunit, const char *name, int (*func)(void))
 {
 	t_unit_test	*unit_test;
 
-	unit_test = ft_calloc(1, sizeof(t_unit_test));
+	unit_test = unit_test_new(name, func);
 	if (unit_test == NULL)
 		return (false);
-	unit_test_init(unit_test, name, func);
 	if (!ft_lstnew_back(&libunit->tests, unit_test))
 	{
-		free(unit_test);
+		unit_test_free(unit_test);
 		return (false);
 	}
 	return (true);

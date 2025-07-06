@@ -12,7 +12,7 @@
 
 #include <assert.h>
 
-// assert prints to stdout
+// assert prints to stderr
 int	sigabrt_assert(void)
 {
 	assert(0);

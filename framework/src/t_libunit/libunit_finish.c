@@ -4,14 +4,14 @@
 #include <unistd.h>
 
 // Prints the summary and frees libunit
-t_state	libunit_finish(t_libunit **libunit)
+int	libunit_finish(t_libunit **libunit)
 {
-	t_state	end_state;
+	int	ret_val;
 
 	if (libunit == NULL || *libunit == NULL)
 		return (STATE_ERROR);
-	end_state = (*libunit)->state;
+	ret_val = (*libunit)->state;
 	prt_total_stats(&(*libunit)->total, "SUMMARY");
 	libunit_free(libunit);
-	return (end_state);
+	return (ret_val);
 }

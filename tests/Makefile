@@ -17,7 +17,7 @@ LIBS_LOCAL		=	$(REPO_ROOT)/framework/libunit.a \
 
 #	Files
 
-SOURCELIST_DIRS	:=	KO OK SIGBUS SIGSEGV
+SOURCELIST_DIRS	:=	mandatory
 SOURCELISTS		:=	$(addsuffix /sourcelist.mk,$(SOURCELIST_DIRS))
 SRC_DIR			:=	.
 SRC				:=	main.c

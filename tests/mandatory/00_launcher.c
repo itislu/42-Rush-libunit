@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_minus_one.c                                     :+:      :+:    :+:   */
+/*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 11:14:55 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/05 14:22:33 by ldulling         ###   ########.fr       */
+/*   Created: 2025/07/06 09:06:24 by ldulling          #+#    #+#             */
+/*   Updated: 2025/07/06 09:16:05 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	minus_one(void)
+#include "libunit.h"
+#include "tests.h"
+
+// #ifdef TEST_KO
+void	mandatory_launcher(t_libunit *libunit)
 {
-	return (-1);
+	libunit_start_collection(libunit, "mandatory");
+	libunit_load(libunit, "ok", ok);
+	libunit_load(libunit, "ko", ko);
+	libunit_load(libunit, "sigsegv", sigsegv);
+	libunit_load(libunit, "sigbus", sigbus);
+	libunit_launch(libunit);
 }
+// else
+// void	mandatory_launcher(void)
+// {
+// 	return (0);
+// }
+// #endif

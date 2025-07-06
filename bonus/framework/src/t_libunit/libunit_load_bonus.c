@@ -34,6 +34,7 @@ static bool	handle_load(t_libunit *libunit, const char *name, int (*func)(void),
 			libunit->name, name);
 		return (false);
 	}
+	libunit->max_name_len = ft_max_u(ft_strlen(name), libunit->max_name_len);
 	return (true);
 }
 

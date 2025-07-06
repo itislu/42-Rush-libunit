@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:25:43 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 19:59:14 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/06 20:49:19 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef enum e_result
 }	t_result;
 
 t_result	get_child_status(void);
-void		prt_test_result(const char *collection, const char *test_name,
+void		prt_test_result(t_libunit *libunit, const char *test_name,
 				t_result test_result);
 bool		test_basic(t_unit_test *test, t_result *test_result,
 				t_libunit *libunit);

@@ -14,6 +14,7 @@
 # define T_LIBUNIT_BONUS_H
 
 # include "libft/libft.h"
+#include <stddef.h>
 
 # define DEFAULT_TIMEOUT 1
 
@@ -35,6 +36,7 @@ typedef struct s_stats
 typedef struct s_libunit
 {
 	const char	*name;
+	size_t		max_name_len;
 	unsigned	timeout;
 	t_list		*tests;
 	t_stats		total;

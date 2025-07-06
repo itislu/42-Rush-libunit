@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   10_sigabrt_abort.c                                 :+:      :+:    :+:   */
+/*   14_sigfpe_div.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/06 17:10:25 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 17:12:00 by mweghofe         ###   ########.fr       */
+/*   Created: 2025/07/06 17:15:10 by mweghofe          #+#    #+#             */
+/*   Updated: 2025/07/06 17:28:37 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	sigabrt_abort(void)
+int	sigfpe_div(void)
 {
-	abort();
+	volatile int	zero;
+	int				sig;
+
+	zero = 0;
+	sig = 10 / zero;
 	return (-1);
 }

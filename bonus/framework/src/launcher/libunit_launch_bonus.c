@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:04:45 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 22:10:07 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 22:50:09 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	libunit_launch(t_libunit *libunit)
 	ft_bzero(&collection_stats, sizeof collection_stats);
 	node = libunit->tests;
 	create_log(libunit);
+	prt_test_start_log(libunit->name, libunit->log_fd);
 	while (node != NULL)
 	{
 		test = node->content;

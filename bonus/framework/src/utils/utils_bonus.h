@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 17:34:30 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 22:08:52 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/06 22:50:13 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "launcher/launcher_bonus.h"
 
 void	prt_test_start(const char *collection_name);
+void	prt_test_start_log(const char *collection_name, int log_fd);
 void	prt_test_result(t_libunit *libunit, const char *test_name,
 			t_result test_result, int runtime_ms);
 void	prt_total_stats(t_stats *stats, const char *name, int log_fd);

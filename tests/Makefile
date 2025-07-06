@@ -4,7 +4,7 @@ include				$(shell git rev-parse --show-toplevel)/build/setup.mk
 # ***************************** CONFIGURATION ******************************** #
 
 NAME			:=	$(basename $(REPO_SUBDIR))
-MSG_PROGRESS	:=	"🛠️ "
+MSG_PROGRESS	:=	"🧪"
 MSG_USAGE		?=	"Usage: ./$(NAME)"
 COLOR_MAKE		=	$(STY_GRE)
 

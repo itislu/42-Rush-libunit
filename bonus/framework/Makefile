@@ -34,6 +34,7 @@ SRC				:=	$(addprefix $(SRC_DIR)/, \
 					utils/prt_test_start_bonus.c \
 					utils/prt_tests_result_bonus.c \
 					utils/log_init.c \
+					utils/timer.c \
 )
 
 

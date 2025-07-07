@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_stdout_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
+/*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 18:13:25 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 23:19:13 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/07 00:07:35 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ static t_result	test_fd_content_match(int fd, const char *expected_output)
 			return (test_result);
 		buffer[bytes_read] = '\0';
 		if (test_result == TEST_OK
-			&& strcmp(buffer, &expected_output[total_bytes_read]) != 0)
+			&& strncmp(
+				buffer, &expected_output[total_bytes_read], bytes_read) != 0)
 			test_result = TEST_KO;
 		total_bytes_read += bytes_read;
 	}

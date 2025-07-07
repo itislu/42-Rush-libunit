@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:52:12 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 22:15:44 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:09:39 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void	prt_test_result(t_libunit *libunit, const char *test_name,
 	if (libunit->log_fd == -1)
 		return ;
 	ft_dprintf(libunit->log_fd,
-		"%s : %-*s : %s\n",
+		"%s : %-*s : %s : %i ms\n",
 		libunit->name,
 		(int)libunit->max_name_len, test_name,
-		result_as_string(test_result));
+		result_as_string(test_result),
+		runtime_ms);
 }
 
 /*

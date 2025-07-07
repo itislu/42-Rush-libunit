@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   timer.c                                            :+:      :+:    :+:   */
+/*   timer_ctrl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 23:27:43 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/07 15:30:20 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:49:55 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "utils_bonus.h"
 
 static struct timespec	log_timer(struct timespec *now);
-static struct timespec	subtract_timespec(struct timespec a, struct timespec b);
-static long long		time_in_nanoseconds(struct timespec time);
 
 void	start_log_timer(void)
 {
@@ -35,30 +33,6 @@ long long	get_log_runtime(void)
 		return (-1);
 	runtime_ms = time_in_nanoseconds(subtract_timespec(now, log_timer(NULL)));
 	return (runtime_ms);
-}
-
-// subtract B from A
-static struct timespec	subtract_timespec(struct timespec a, struct timespec b)
-{
-	struct timespec diff;
-
-	diff.tv_sec = a.tv_sec - b.tv_sec;
-	diff.tv_nsec = a.tv_nsec - b.tv_nsec;
-	if (diff.tv_nsec < 0)
-	{
-		diff.tv_sec--;
-		diff.tv_nsec += SEC_IN_NSEC;
-	}
-	return (diff);
-}
-
-static long long	time_in_nanoseconds(struct timespec time)
-{
-	long long	msec;
-
-	msec = time.tv_sec * SEC_IN_NSEC;
-	msec += time.tv_nsec;
-	return (msec);
 }
 
 // can store (pass it a valid NOW struct) and return (pass NULL) the start time

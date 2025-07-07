@@ -6,18 +6,17 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:40:16 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/07 15:54:18 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:56:25 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <time.h>
 #include "utils_bonus.h"
 
-
 // subtract B from A
 struct timespec	subtract_timespec(struct timespec a, struct timespec b)
 {
-	struct timespec diff;
+	struct timespec	diff;
 
 	diff.tv_sec = a.tv_sec - b.tv_sec;
 	diff.tv_nsec = a.tv_nsec - b.tv_nsec;

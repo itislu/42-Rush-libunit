@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launchers_bonus.h                                  :+:      :+:    :+:   */
+/*   06_stdout_duplicate_flags_bonus.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 08:17:41 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/07 00:13:56 by ldulling         ###   ########.fr       */
+/*   Created: 2025/07/06 07:41:23 by ldulling          #+#    #+#             */
+/*   Updated: 2025/07/07 00:01:06 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LAUNCHERS_BONUS_H
-# define LAUNCHERS_BONUS_H
+#include "libft/ft_printf.h"
+#include <stdio.h>
+#include <string.h>
 
-# include "libunit_bonus.h"
-
-void	ft_atoi_launcher(t_libunit *libunit);
-void	ft_printf_launcher(t_libunit *libunit);
-void	ft_snprintf_launcher(t_libunit *libunit);
-
-#endif
+int	stdout_duplicate_flags(void)
+{
+	if ((size_t) ft_printf("%-##--#*.*x", 32, 4, 42) == 32)
+		return (0);
+	return (-1);
+}

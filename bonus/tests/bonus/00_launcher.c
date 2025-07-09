@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 09:06:24 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/10 00:46:09 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/10 00:46:25 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	bonus_launcher(t_libunit *libunit)
 		"stop here -->   ");
 	libunit_load_stdout(libunit, "stdout_ok_mismatch", stdout_ok,
 		"stop here --><--");
+	libunit_load_stdout(libunit, "stdout_ok_len_mismatch", stdout_ok,
+		"stop here -->    ");
 	libunit_load_stdout(libunit, "stdout_ko_match", stdout_ko,
 		"stop here -->   ");
 	libunit_load_stdout(libunit, "stdout_ko_mismatch", stdout_ko,

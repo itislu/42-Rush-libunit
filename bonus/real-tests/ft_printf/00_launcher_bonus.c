@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 07:40:59 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/07 00:00:55 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/10 09:49:40 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	ft_printf_launcher(t_libunit *libunit)
 		libunit, "stdout_asterisk", stdout_asterisk,
 		"test                            ");
 	libunit_load_stdout(
-		libunit, "stdout_duplicate_flags", stdout_duplicate_flags,
-		"0x002a                          ");
+		libunit, "stdout_all_features", stdout_all_features,
+		".      -(nil)    +-2147483648# 2147483647.000000000042949672950"
+		"0xffffffff1   %*");
 	libunit_launch(libunit);
 }

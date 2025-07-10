@@ -75,7 +75,7 @@ ifeq (0, $(MAKELEVEL))
 #	Make status messages
 
 MSG_MAKE_INFO	:=	$(STY_ITA)$(STY_WHI)"Make version: $(MAKE_VERSION)"$(STY_RES)
-MSG_COMP_INFO	=	$(STY_ITA)$(STY_WHI)"Compiler version: $(CXX_VERSION)"$(STY_RES)
+MSG_COMP_INFO	=	$(STY_ITA)$(STY_WHI)"Compiler version: $(CC_VERSION)"$(STY_RES)
 MSG_HELP		:=	$(STY_ITA)$(STY_WHI)"Run 'make help' to see all available Makefile targets."$(STY_RES)
 MSG_START		=	$(STY_ITA)$(if $(RECOMPILE),"Rebuilding","Building")" $(NAME) ... "$(STY_RES)
 MSG_SUCCESS		?=	$(STY_BOL)$(STY_ITA)$(COLOR_MAKE)"DONE!"$(STY_RES)

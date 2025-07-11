@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 09:06:24 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 23:07:44 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/10 00:46:25 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ void	bonus_launcher(t_libunit *libunit)
 	libunit_load(libunit, "sigfpe_mod", sigfpe_mod);
 	libunit_load(libunit, "sigpipe_pipe", sigpipe_pipe);
 	libunit_load(libunit, "sigpipe_socket", sigpipe_socket);
-	libunit_load_stdout(libunit, "stdout_ok_match", stdout_ok_match,
+	libunit_load_stdout(libunit, "stdout_ok_match", stdout_ok,
 		"stop here -->   ");
-	libunit_load_stdout(libunit, "stdout_ok_mismatch", stdout_ok_mismatch,
+	libunit_load_stdout(libunit, "stdout_ok_mismatch", stdout_ok,
 		"stop here --><--");
-	libunit_load_stdout(libunit, "stdout_ko_match", stdout_ko_match,
+	libunit_load_stdout(libunit, "stdout_ok_len_mismatch", stdout_ok,
+		"stop here -->    ");
+	libunit_load_stdout(libunit, "stdout_ko_match", stdout_ko,
 		"stop here -->   ");
-	libunit_load_stdout(libunit, "stdout_ko_mismatch", stdout_ko_mismatch,
+	libunit_load_stdout(libunit, "stdout_ko_mismatch", stdout_ko,
 		"stop here --><--");
 	libunit_launch(libunit);
 }

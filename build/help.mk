@@ -51,11 +51,11 @@ help-test test-help:
 
 help-opt opt-help:
 					echo -e "Rebuild the $(PROJECT_TYPE) with the following compiler optimization flags:"
-					echo -e "  $(CXXFLAGS_OPT)"
+					echo -e "  $(CFLAGS_OPT)"
 
 help-san san-help:
 					echo -e "Rebuild the $(PROJECT_TYPE) with the following sanitizer flags:"
-					echo -e "  $(CXXFLAGS_SAN)"
+					echo -e "  $(CFLAGS_SAN)"
 
 help-val val-help:
 					echo -e "Build and run the $(PROJECT_TYPE) with valgrind."

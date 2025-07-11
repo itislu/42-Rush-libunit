@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 08:29:59 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 22:06:24 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/10 00:42:29 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ int	sigfpe_div(void);
 int	sigfpe_mod(void);
 int	sigpipe_pipe(void);
 int	sigpipe_socket(void);
-int	stdout_ok_match(void);
-int	stdout_ok_mismatch(void);
-int	stdout_ko_match(void);
-int	stdout_ko_mismatch(void);
+int	stdout_ok(void);
+int	stdout_ko(void);
 
 #endif

@@ -5,7 +5,7 @@ include				$(shell git rev-parse --show-toplevel)/bonus/build/setup.mk
 
 NAME			:=	$(notdir $(REPO_SUBDIR))_bonus
 MSG_PROGRESS	:=	"📝"
-MSG_USAGE		?=	"Usage: ./$(NAME)"
+MSG_USAGE		?=	"Usage: make test"
 COLOR_MAKE		=	$(STY_GRE)
 
 

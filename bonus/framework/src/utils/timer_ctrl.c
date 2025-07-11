@@ -19,7 +19,7 @@ void	start_log_timer(void)
 {
 	struct timespec	now;
 
-	if (clock_gettime(1, &now) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &now) != 0)
 		return ;
 	log_timer(&now);
 }
@@ -29,7 +29,7 @@ long long	get_log_runtime(void)
 	struct timespec	now;
 	long long		runtime_ms;
 
-	if (clock_gettime(1, &now) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &now) != 0)
 		return (-1);
 	runtime_ms = time_in_nanoseconds(subtract_timespec(now, log_timer(NULL)));
 	return (runtime_ms);

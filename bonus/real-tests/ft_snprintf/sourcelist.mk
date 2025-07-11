@@ -5,5 +5,5 @@ SRC	+=	$(addprefix ft_snprintf/, \
 		03_left_aligned_bonus.c \
 		04_precision_bonus.c \
 		05_asterisk_bonus.c \
-		06_duplicate_flags_bonus.c \
+		06_all_features_bonus.c \
 )

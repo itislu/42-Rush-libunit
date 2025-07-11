@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 08:29:59 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/05 19:40:38 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/10 09:16:58 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int	width(void);
 int	left_aligned(void);
 int	precision(void);
 int	asterisk(void);
-int	duplicate_flags(void);
+int	all_features(void);
 
 #endif

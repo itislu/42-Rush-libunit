@@ -16,8 +16,6 @@ SRC	+=	$(addprefix bonus/, \
 		14_sigfpe_div.c \
 		15_sigpipe_pipe.c \
 		16_sigpipe_socket.c \
-		17_stdout_ok_match.c \
-		18_stdout_ok_mismatch.c \
-		19_stdout_ko_match.c \
-		20_stdout_ko_mismatch.c \
+		17_stdout_ok.c \
+		18_stdout_ko.c \
 )

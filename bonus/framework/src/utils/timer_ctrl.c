@@ -30,7 +30,7 @@ long long	get_log_runtime(void)
 	struct timespec	now;
 	long long		runtime_ns;
 
-	if (clock_gettime(1, &now) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &now) != 0)
 		return (-1);
 	runtime_ns = time_in_nanoseconds(subtract_timespec(now, log_timer(NULL)));
 	return (runtime_ns);

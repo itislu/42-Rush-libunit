@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 17:15:10 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 17:28:37 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/11 14:12:19 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	sigfpe_div(void)
 	int				sig;
 
 	zero = 0;
-	sig = 10 / zero;
+	sig = 10;
+	sig /= zero;
 	return (-1);
 }

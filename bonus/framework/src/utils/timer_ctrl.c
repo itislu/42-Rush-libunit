@@ -24,15 +24,16 @@ void	start_log_timer(void)
 	log_timer(&now);
 }
 
+
 long long	get_log_runtime(void)
 {
 	struct timespec	now;
-	long long		runtime_ms;
+	long long		runtime_ns;
 
 	if (clock_gettime(1, &now) != 0)
 		return (-1);
-	runtime_ms = time_in_nanoseconds(subtract_timespec(now, log_timer(NULL)));
-	return (runtime_ms);
+	runtime_ns = time_in_nanoseconds(subtract_timespec(now, log_timer(NULL)));
+	return (runtime_ns);
 }
 
 // can store (pass it a valid NOW struct) and return (pass NULL) the start time

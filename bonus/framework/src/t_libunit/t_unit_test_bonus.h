@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 10:13:27 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 23:09:35 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:24:10 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_unit_test
 	int			(*func)(void);
 	t_test_type	type;
 	const char	*expected_output;
-	int			runtime_ms;
+	long long	runtime_ms;
 }	t_unit_test;
 
 void		unit_test_free(void *content);

@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 07:40:59 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 16:01:09 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/10 10:45:59 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_snprintf_launcher(t_libunit *libunit)
 	libunit_load(libunit, "left_aligned", left_aligned);
 	libunit_load(libunit, "precision", precision);
 	libunit_load(libunit, "asterisk", asterisk);
-	libunit_load(libunit, "duplicate_flags", duplicate_flags);
+	libunit_load(libunit, "all_features", all_features);
+	libunit_load(libunit, "null_buffer", null_buffer);
 	libunit_launch(libunit);
 }

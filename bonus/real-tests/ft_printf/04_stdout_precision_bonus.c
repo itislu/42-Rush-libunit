@@ -6,17 +6,21 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 07:41:19 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 23:58:07 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/10 10:17:45 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/ft_printf.h"
 #include <stdio.h>
-#include <string.h>
 
 int	stdout_precision(void)
 {
-	if ((size_t) ft_printf("%-32.4s", "test_string") == 32)
+	int	ft_ret;
+	int	og_ret;
+
+	ft_ret = ft_printf("%-32.4s", "test_string");
+	og_ret = snprintf(NULL, 0, "%-32.4s", "test_string");
+	if (ft_ret == og_ret)
 		return (0);
 	return (-1);
 }

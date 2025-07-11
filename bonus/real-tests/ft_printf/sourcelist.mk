@@ -5,5 +5,5 @@ SRC	+=	$(addprefix ft_printf/, \
 		03_stdout_left_aligned_bonus.c \
 		04_stdout_precision_bonus.c \
 		05_stdout_asterisk_bonus.c \
-		06_stdout_duplicate_flags_bonus.c \
+		06_stdout_all_features_bonus.c \
 )

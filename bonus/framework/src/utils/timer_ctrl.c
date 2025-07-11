@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 23:27:43 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/07 15:49:55 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:22:53 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	start_log_timer(void)
 long long	get_log_runtime(void)
 {
 	struct timespec	now;
-	long long		runtime_ms;
+	long long		runtime_ns;
 
 	if (clock_gettime(CLOCK_MONOTONIC, &now) != 0)
 		return (-1);
-	runtime_ms = time_in_nanoseconds(subtract_timespec(now, log_timer(NULL)));
-	return (runtime_ms);
+	runtime_ns = time_in_nanoseconds(subtract_timespec(now, log_timer(NULL)));
+	return (runtime_ns);
 }
 
 // can store (pass it a valid NOW struct) and return (pass NULL) the start time

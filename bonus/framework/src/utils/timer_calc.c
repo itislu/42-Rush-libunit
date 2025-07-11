@@ -30,11 +30,11 @@ struct timespec	subtract_timespec(struct timespec a, struct timespec b)
 
 long long	time_in_nanoseconds(struct timespec time)
 {
-	long long	msec;
+	long long	nsec;
 
-	msec = time.tv_sec * SEC_IN_NSEC;
-	msec += time.tv_nsec;
-	return (msec);
+	nsec = time.tv_sec * SEC_IN_NSEC;
+	nsec += time.tv_nsec;
+	return (nsec);
 }
 
 // convert nanoseconds NSEC into structure t_time T (SS:3MS:3US:3NS)

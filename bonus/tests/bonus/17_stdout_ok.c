@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   19_stdout_ko_match.c                               :+:      :+:    :+:   */
+/*   17_stdout_ok.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 11:14:55 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 22:05:50 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/10 00:42:17 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/ft_printf.h"
 
-int	stdout_ko_match(void)
+int	stdout_ok(void)
 {
-	if (ft_printf("%-*.*s", 16, 13, "stop here --><--") == 13)
+	if (ft_printf("%-*.*s", 16, 13, "stop here --><--") == 16)
 		return (0);
 	return (-1);
 }

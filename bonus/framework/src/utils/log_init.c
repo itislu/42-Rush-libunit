@@ -16,7 +16,6 @@
 #include "utils/colors_bonus.h"
 #include <fcntl.h>
 #include <unistd.h>
-#include <time.h>
 #include <stdlib.h>
 
 void	create_log(t_libunit *libunit)

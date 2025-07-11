@@ -19,7 +19,7 @@ void	start_log_timer(void)
 {
 	struct timespec	now;
 
-	if (clock_gettime(1, &now) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &now) != 0)
 		return ;
 	log_timer(&now);
 }

@@ -6,7 +6,7 @@
 /*   By: ldulling <ldulling@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 18:13:25 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/07 00:07:35 by ldulling         ###   ########.fr       */
+/*   Updated: 2025/07/10 00:34:00 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <unistd.h>
 
 static void		child(t_unit_test *test, t_libunit *libunit, int pipe_fd[2]);
-static t_result	test_fd_content_match(int fd, const char *expected_output);
+static t_result	test_fd_content_match(int fd, const char *expected);
 
 // Returns false if fork etc failed
 bool	test_stdout(t_unit_test *test, t_result *test_result,
@@ -71,7 +71,7 @@ static void	child(t_unit_test *test, t_libunit *libunit, int pipe_fd[2])
 	exit(status);
 }
 
-static t_result	test_fd_content_match(int fd, const char *expected_output)
+static t_result	test_fd_content_match(int fd, const char *expected)
 {
 	char			buffer[BUFFER_SIZE];
 	ssize_t			bytes_read;
@@ -86,11 +86,14 @@ static t_result	test_fd_content_match(int fd, const char *expected_output)
 		if (bytes_read == -1)
 			return (TEST_ERROR);
 		if (bytes_read == 0)
+		{
+			if (test_result == TEST_OK && expected[total_bytes_read] != '\0')
+				test_result = TEST_KO;
 			return (test_result);
+		}
 		buffer[bytes_read] = '\0';
 		if (test_result == TEST_OK
-			&& strncmp(
-				buffer, &expected_output[total_bytes_read], bytes_read) != 0)
+			&& strncmp(buffer, &expected[total_bytes_read], bytes_read) != 0)
 			test_result = TEST_KO;
 		total_bytes_read += bytes_read;
 	}

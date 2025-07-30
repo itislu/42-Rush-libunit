@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 15:56:47 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 22:50:17 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:50:18 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	prt_test_start_log(const char *collection_name, int log_fd)
 	strftime(buffer, sizeof buffer, "%Y-%m-%d %H:%M:%S", datetime);
 	ft_dprintf(
 		log_fd,
-		"%s :: starting %s test series\n",
+		"%s :: starting %s test series (runtime in s:ms:µs)\n",
 		buffer,
 		collection_name);
 }

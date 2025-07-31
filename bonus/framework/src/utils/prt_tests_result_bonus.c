@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:52:12 by mweghofe          #+#    #+#             */
-/*   Updated: 2025/07/06 22:15:44 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/30 15:52:20 by mweghofe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,32 @@
 #include "launcher/launcher_bonus.h"
 #include "t_libunit/t_libunit_bonus.h"
 #include "utils/colors_bonus.h"
+#include "utils/utils_bonus.h"
+#include <stdio.h>
 
 static const char	*result_as_string_colored(t_result result);
 static const char	*result_as_string(t_result result);
 
-// print test result: [test_function]:[test_name]:[status]
+// print test result: [test_function]:[test_name]:[status]:[runtime]
 void	prt_test_result(t_libunit *libunit, const char *test_name,
-			t_result test_result, int runtime_ms)
+			t_result test_result, long long runtime_ns)
 {
-	(void) runtime_ms;
+	t_time	time;
+
+	convert_nanoseconds(runtime_ns, &time);
 	ft_printf("%s%s%s : %-*s : %s%s\n",
 		BOLD, libunit->name, RESET,
 		(int)libunit->max_name_len, test_name,
 		BOLD, result_as_string_colored(test_result));
 	if (libunit->log_fd == -1)
 		return ;
-	ft_dprintf(libunit->log_fd,
-		"%s : %-*s : %s\n",
-		libunit->name,
-		(int)libunit->max_name_len, test_name,
-		result_as_string(test_result));
-}
-
-/*
-	TODO insert again when better runtime calculation is implemented
-	ft_dprintf(libunit->log_fd,
-		"%s : %-*s : %s : %i ms\n",
+	dprintf(libunit->log_fd,
+		"%s : %-*s : %s : %02i:%03i:%03i\n",
 		libunit->name,
 		(int)libunit->max_name_len, test_name,
 		result_as_string(test_result),
-		runtime_ms);
-*/
+		time.sec, time.msec, time.usec);
+}
 
 static const char	*result_as_string_colored(t_result result)
 {

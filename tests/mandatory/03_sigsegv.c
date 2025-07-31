@@ -6,7 +6,7 @@
 /*   By: mweghofe <mweghofe@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 11:14:55 by ldulling          #+#    #+#             */
-/*   Updated: 2025/07/06 12:52:27 by mweghofe         ###   ########.fr       */
+/*   Updated: 2025/07/10 08:31:21 by ldulling         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 int	sigsegv(void)
 {
-	const char	*file;
-	char		*file_in_mem;
-	char		bus_err;
-	int			fd;
-	int			page_size;
+	const char		*file;
+	char			*file_in_mem;
+	volatile char	bus_err;
+	int				fd;
+	int				page_size;
 
 	file = "/tmp/SIGBUS_TRIGGER";
 	fd = open(file, O_CREAT | O_RDONLY, 0644);
@@ -36,5 +36,6 @@ int	sigsegv(void)
 		return (unlink(file), -1);
 	unlink(file);
 	bus_err = file_in_mem[(size_t) -1 / 2];
+	(void)bus_err;
 	return (-1);
 }
